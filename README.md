@@ -1,6 +1,6 @@
 # Jadu Developer Finalist Task
 
-![Group 1429](https://github.com/JaduAR/jadu-developer-finalist-task/assets/107214005/d6323c46-8bea-4132-a8a9-16e05600fa01)
+![Group 1429](https://firebasestorage.googleapis.com/v0/b/jadu-storagbucket-2/o/JaduContent%2FDesign%20Task.png?alt=media)
 
 ## Instructions
 As a developer at Jadu, you will be expected to be able to implement features that combine 2D and 3D elements when provided with rigid specifications. This task was designed to give us a sense of your comfortability in both of these spaces.
