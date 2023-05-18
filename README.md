@@ -10,7 +10,7 @@ As a developer at Jadu, you will be expected to be able to implement features th
 3. Copy and sign the Test Waiver file found at `Assets/Materials/Test Test Waiver.pdf`
 4. Add the signed copy of your test waiver to the `Assets/Signed Waiver/` folder as `[Your Name] - Signed Waiver`
 5. Submit a PR titled `[Your Name] Character Customizer` and assign j@jadu.ar as a reviewer.
-6. Sit tight! We'll get back to you shortly
+6. Sit tight! We'll get back to you shortly.
 
 ## Notes
 - PRs must be submitted by **05/25/23**
