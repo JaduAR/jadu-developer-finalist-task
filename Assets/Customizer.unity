@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Idle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
+  m_sharedMaterial: {fileID: -1745229641381641070, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -451,7 +451,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674609004}
-  m_LocalRotation: {x: 0.0009723204, y: 0.9855744, z: -0.0056655114, w: 0.16914521}
+  m_LocalRotation: {x: 0.00097232475, y: 0.98557436, z: -0.005665537, w: 0.16914521}
   m_LocalPosition: {x: -0.2900001, y: 0.47249, z: 0.80444753}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -614,8 +614,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hair
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
+  m_sharedMaterial: {fileID: -1745229641381641070, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1585,8 +1585,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Skin
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
+  m_sharedMaterial: {fileID: -1745229641381641070, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
