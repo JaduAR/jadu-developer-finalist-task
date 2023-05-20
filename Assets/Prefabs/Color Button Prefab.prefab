@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2789139913141401529}
   - component: {fileID: 299844451471000609}
   m_Layer: 5
-  m_Name: Color Button
+  m_Name: Color Button Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

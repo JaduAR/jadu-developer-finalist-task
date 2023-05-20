@@ -7,5 +7,8 @@ public abstract class Selector : MonoBehaviour
     protected Tab owner;
     public abstract void Select();
     public abstract void Deselect();
-    public abstract void SetOwner(Tab owner);
+    public virtual void SetOwner(Tab owner)
+    {
+        this.owner = owner;
+    }
 }
