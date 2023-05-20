@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
+using DG.Tweening;
 
 public class CustomizationTabTitleManager : MonoBehaviour
 {
     [SerializeField] List<CustomizationTabTitle> customizationTabTitles = new List<CustomizationTabTitle>();
     [SerializeField] CustomizationTabTitle currentTab;
+    [SerializeField] RectTransform tabUnderline;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +29,7 @@ public class CustomizationTabTitleManager : MonoBehaviour
     {
         if (currentTab) currentTab.UnSetCurrent();
         currentTab = customizationTabTitle;
+        tabUnderline.parent = currentTab.transform;
+        tabUnderline.DOAnchorPosX(0, 0.5f);
     }
 }
