@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject CustomizationPanel;
 
+    public List<GameObject> CustomizationPanelTabs = new List<GameObject>();// Will contain all the below tabs
+
+    public GameObject SkinCustomizationPanel;
+    public GameObject HairCustomizationPanel;
+
     void Awake()
     {
         Instance = this;
@@ -23,19 +28,25 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if (!CameraManager) CameraManager = CameraManager.Instance;
+
+        CustomizationPanelTabs.Add(SkinCustomizationPanel);
+        CustomizationPanelTabs.Add(HairCustomizationPanel);
     }
     public void SetIdleState()
     {
         CameraManager.SwitchCamera(IdleCam);
         CustomizationPanel.SetActive(false);
+        DisableTabs();
     }
     public void SetSkinSelectState()
     {
         CameraManager.SwitchCamera(SkinCloseUpCam);
+        EnableTab(SkinCustomizationPanel);
     }
     public void SetHairSelectState()
     {
         CameraManager.SwitchCamera(HairCloseUpCam);
+        EnableTab(HairCustomizationPanel);
     }
 
     public void SetCustomizeState()
@@ -47,28 +58,21 @@ public class GameManager : MonoBehaviour
             print(Input.mousePosition);
         }
     }
-    private void Update()
+    private void EnableTab(GameObject currentTab)
     {
-        if (Input.GetMouseButtonDown(0))
+        foreach (var tab in CustomizationPanelTabs)
         {
-            //print(Input.mousePosition);
+            if (tab == currentTab)
+                tab.SetActive(true);
+            else
+                tab.SetActive(false);
+        }
+    }
 
-            //We transform the touch position into word space from screen space and store it.
-            var touchPosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            Vector2 touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
-
-            //We now raycast with this information. If we have hit something we can process it.
-            RaycastHit2D hitInformation = Physics2D.Raycast(touchPosWorld2D, Camera.main.transform.forward);
-
-            if (hitInformation.collider != null)
-            {
-                //We should have hit something with a 2D Physics collider!
-                GameObject touchedObject = hitInformation.transform.gameObject;
-                //touchedObject should be the object someone touched.
-                Debug.Log("Touched " + touchedObject.transform.name);
-            }
-
+    private void DisableTabs() {
+        foreach (var tab in CustomizationPanelTabs)
+        {
+            tab.SetActive(false);
         }
     }
 }
