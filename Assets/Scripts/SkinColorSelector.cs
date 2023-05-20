@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkinColor : MonoBehaviour
+public class SkinColorSelector : CustomizationSelector
 {
-    public SkinColorManager SkinColorManager;
     public Color Color;
     public Image Image;
     [SerializeField] RectTransform RectTransform;
@@ -22,12 +21,12 @@ public class SkinColor : MonoBehaviour
 
     }
 
-    public void SelectColor()
+    public override void OnSelect()
     {
-        SkinColorManager.SetCurrentSkinColor(this);
+        SelectionManager.SetSelection(this);
         RectTransform.sizeDelta = selectedSize;
     }
-    public void DeselectColor()
+    public override void OnDeselect()
     {
         RectTransform.sizeDelta = deselectedSize;
     }
