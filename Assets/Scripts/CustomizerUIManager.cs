@@ -69,6 +69,7 @@ public class CustomizerUIManager : MonoBehaviour
     //Slide UI to the bottom.
     public void HideUI()
     {
+        _activeTab?.Deselect();
         _isActive = false;
         UpdateUIPosition(new Vector2(0,-1000));
         OnUIClosed?.Invoke();
