@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CreateHairType : MonoBehaviour
 {
-    [MenuItem("Assets/Create/Skin Type")]
+    [MenuItem("Assets/Create/Hair Type")]
     public static void CreateAHairType()
     {
         Garement playerScriptableObject = ScriptableObject.CreateInstance
