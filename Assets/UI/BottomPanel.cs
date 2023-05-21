@@ -5,8 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BottomPanel : MonoBehaviour
-{
+public class BottomPanel : MonoBehaviour {
     [SerializeField]
     TabScriptableObject[] tabs;
 
