@@ -4,5 +4,6 @@ using UnityEngine.UI;
 /// </summary>
 public interface IGarmentUIToggle 
 {
-    public void CreateToggle(Garment garment, ToggleGroup toggleGroup);
+    public void CreateToggle(Garment garment, ToggleGroup toggleGroup,
+        bool isOn);
 }

@@ -26,7 +26,8 @@ public class InventoryScrollView : MonoBehaviour
                 IGarmentUIToggle garmentToggle = icon.GetComponent<IGarmentUIToggle>();
                 if(garmentToggle != null && toggleGroup != null)
                 {
-                    garmentToggle.CreateToggle(garments[i], toggleGroup);
+                    garmentToggle.CreateToggle(garments[i], toggleGroup,
+                        i==0);
                     if(contentParent != null)
                     {
                         icon.transform.SetParent(contentParent);

@@ -319,6 +319,8 @@ MonoBehaviour:
   m_IsOn: 0
   icon: {fileID: 1929231127899674927}
   titleText: {fileID: 1929231128863635808}
+  selectedColor: {r: 1, g: 1, b: 1, a: 1}
+  unSelectedColor: {r: 0.6039216, g: 0.627451, b: 0.67058825, a: 1}
 --- !u!1 &1929231128863635810
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,8 +396,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289437850
+  m_fontColor: {r: 0.6039216, g: 0.627451, b: 0.67058825, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
