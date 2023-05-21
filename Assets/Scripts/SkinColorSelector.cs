@@ -10,6 +10,7 @@ public class SkinColorSelector : CustomizationSelector
     [SerializeField] Image Image;
     [SerializeField] RectTransform RectTransform;
 
+    [Header("Size when selected/deselected")]
     [SerializeField] Vector2 selectedSize = new Vector2(10, 10);
     [SerializeField] Vector2 deselectedSize = new Vector2(20, 20);
 
@@ -24,11 +25,12 @@ public class SkinColorSelector : CustomizationSelector
 
     public override void OnSelect()
     {
-        SelectionManager.SetSelection(this);
+        base.OnSelect();
         RectTransform.DOSizeDelta(selectedSize, EaseDuration).SetEase(EaseStyle);
     }
     public override void OnDeselect()
     {
+        base.OnDeselect();
         RectTransform.DOSizeDelta(deselectedSize, EaseDuration).SetEase(EaseStyle);
     }
 }

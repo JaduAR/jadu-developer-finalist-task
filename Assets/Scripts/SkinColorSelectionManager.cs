@@ -5,8 +5,11 @@ using UnityEngine.UIElements;
 
 public class SkinColorSelectionManager : SelectionManager
 {
+    [Tooltip("Collection of colors to spawn")]
     [SerializeField] List<Color> InitialSkinColors;
+    [Tooltip("Prefab to spawn in from InitialSkinColors")]
     [SerializeField] GameObject SkinColorPrefab;
+    [Tooltip("Parent color selectors to viewport")]
     [SerializeField] Transform SkinColorContent;
     [SerializeField] List<GameObject> SkinColorSelectors = new List<GameObject>();
 
@@ -21,14 +24,5 @@ public class SkinColorSelectionManager : SelectionManager
 
             SkinColorSelectors.Add(skinColorGameObject);
         }
-
     }
-    public override void SetSelection(CustomizationSelector selection)
-    {
-        if (CurrentSelection)
-            CurrentSelection.OnDeselect();
-
-        CurrentSelection = selection;
-    }
-
 }

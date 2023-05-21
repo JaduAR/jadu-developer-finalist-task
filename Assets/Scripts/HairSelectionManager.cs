@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class HairSelectionManager : SelectionManager
 {
+    [Tooltip("Collection of hairstyle selectors to spawn in")]
     [SerializeField] GameObject[] InitialPrefabs;
+    [Tooltip("Parent hair selectors to viewport")]
     [SerializeField] Transform HairContent;
     [SerializeField] GameObject[] HairContentSelectors;
 
@@ -14,12 +16,5 @@ public class HairSelectionManager : SelectionManager
         {
              Instantiate(pref, HairContent).GetComponent<HairSelector>().SelectionManager = this;
         }
-    }
-    public override void SetSelection(CustomizationSelector selection)
-    {
-        if (CurrentSelection)
-            CurrentSelection.OnDeselect();
-
-        CurrentSelection = selection;
     }
 }

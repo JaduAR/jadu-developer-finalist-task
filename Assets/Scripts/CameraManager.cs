@@ -4,6 +4,9 @@ using UnityEngine;
 using Cinemachine;
 using System.Linq;
 
+/// <summary>
+/// Keeps track of Cinemachine virtual cameras
+/// </summary>
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance { get; private set; }
@@ -38,16 +41,14 @@ public class CameraManager : MonoBehaviour
 
     public void SwitchCamera(CinemachineVirtualCamera nextCam)
     {
-
         _activeCam = nextCam;
 
         foreach (var cam in Cameras)
-        {
+        {// set other cams to lower priority
             if (cam == _activeCam) _activeCam.Priority = 1;
             else cam.Priority = 0;
         }
 
-        print($"Active cam: {_activeCam}. Priority {_activeCam.Priority}");
-
+        //print($"Active cam: {_activeCam}. Priority {_activeCam.Priority}");
     }
 }

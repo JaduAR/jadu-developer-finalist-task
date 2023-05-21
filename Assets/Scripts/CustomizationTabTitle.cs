@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// A tab title among the customization tabs
+/// </summary>
 public class CustomizationTabTitle : MonoBehaviour
 {
     CustomizationTabTitleManager manager;
     public TextMeshProUGUI Title;
+
+    [Header("Bold on selected")]
     public TMP_FontAsset Regular;
     public TMP_FontAsset Bold;
-    // Start is called before the first frame update
+
     void Awake()
     {
+        // Janky but sure way to get manager
         manager = transform.parent.parent.parent.GetComponent<CustomizationTabTitleManager>();
         manager.AddCustomizationTabTitle(this);
     }
