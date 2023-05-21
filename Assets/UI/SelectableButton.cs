@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(Animator))]
 public class SelectableButton : MonoBehaviour {
 
     public void AddListener(UnityAction fn) {

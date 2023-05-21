@@ -1,24 +1,29 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(RectTransform))]
 public class BottomPanel : MonoBehaviour {
+
     [SerializeField]
     TabScriptableObject[] tabs;
+
+    // tab selectors are the buttons that change tabs
 
     [SerializeField]
     BottomTab tabSelectorPrefab;
 
     [SerializeField]
     Transform tabSelectorParent;
+
     BottomTab[] tabSelectors;
+    
+    // tab contents are the bodies of the tabs
 
     [SerializeField]
     Transform tabContentParent;
-    GameObject[] tabContents;
+
+    TabContents[] tabContents;
 
     [SerializeField]
     RectTransform selectedIndicator;
@@ -37,34 +42,32 @@ public class BottomPanel : MonoBehaviour {
     private void Start() {
         rectTransform = GetComponent<RectTransform>();
 
+        // add tab selectors for all tabs
         tabSelectors = tabs.Select((t, i) => {
             BottomTab sel = Instantiate(tabSelectorPrefab, tabSelectorParent);
             sel.SetLabel(t.label);
-            sel.AddListener(() => {
-                SetTab(i);
-            });
+            sel.AddListener(() => SetTab(i));
             return sel;
         }).ToArray();
 
+        // add tab contents for all tabs
         tabContents = tabs.Select(t => Instantiate(t.contentPrefab, tabContentParent)).ToArray();
 
+        // refresh current tab
         SetTab(currentTab);
     }
 
     private void Update() {
-        float target = 0.0f;
+        // transition entire bottom panel to new height (ease out)
+        float targetPosY = hidden ? 0.0f : tabs[currentTab].panelHeight;
+        float curPosY = rectTransform.anchoredPosition.y;
+        float newPosY = Mathf.Lerp(curPosY, targetPosY, Time.deltaTime * transitionSpeed);
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, newPosY);
 
-        if (!hidden) {
-            target = tabs[currentTab].panelHeight;
-        }
-
-        // transition to new height (ease out)
-        float curHeight = rectTransform.anchoredPosition.y;
-        float newHeight = Mathf.Lerp(curHeight, target, Time.deltaTime * transitionSpeed);
-        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, newHeight);
-
-        float indicatorTarget = tabSelectors[currentTab].GetComponent<RectTransform>().anchoredPosition.x;
-        float newIndicatorPos = Mathf.Lerp(selectedIndicator.anchoredPosition.x, indicatorTarget, Time.deltaTime * transitionSpeed * 1.5f);
+        // transition the tab indicator to be under the current tab selector
+        float indicatorTargetPos = tabSelectors[currentTab].GetComponent<RectTransform>().anchoredPosition.x;
+        float curIndicatorPos = selectedIndicator.anchoredPosition.x;
+        float newIndicatorPos = Mathf.Lerp(curIndicatorPos, indicatorTargetPos, Time.deltaTime * transitionSpeed * 1.5f);
         selectedIndicator.anchoredPosition = new Vector2(newIndicatorPos, selectedIndicator.anchoredPosition.y);
     }
 
@@ -77,24 +80,15 @@ public class BottomPanel : MonoBehaviour {
     public int GetTab() => this.currentTab;
 
     public void SetTab(int tab) {
+        // make sure invalid input doesn't break everything
         currentTab = Math.Clamp(tab, 0, tabs.Length - 1);
 
         // update animations/visibility of tabs
         for (int i = 0; i < tabs.Length; i++) {
             bool current = i == tab;
 
-            // Use animator if present, otherwise just set active/inactive
-            if (tabContents[i].GetComponent<Animator>() is Animator anim && anim != null) {
-                anim.GetComponent<Animator>().SetBool("Selected", current);
-            } else {
-                tabContents[i].SetActive(current);
-            }
-
-            if (tabContents[i].GetComponent<CanvasGroup>() is CanvasGroup cg && cg != null) {
-                cg.blocksRaycasts = current;
-            }
-
             tabSelectors[i].SetSelected(current);
+            tabContents[i].SetSelected(current);
         }
     }
 

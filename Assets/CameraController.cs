@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
+
     [SerializeField]
     BottomPanel bottomPanel;
 
@@ -27,15 +25,9 @@ public class CameraController : MonoBehaviour {
     }
 
     private void Update() {
-        Transform target = overviewTarget;
-        float speedMult = 1.0f;
-
-        if (!bottomPanel.IsHidden()) {
-            target = tabTargets[bottomPanel.GetTab()];
-            speedMult = 1.5f;
-        }
-
-        // move towards target
+        // move towards camera target position
+        Transform target = bottomPanel.IsHidden() ? overviewTarget : tabTargets[bottomPanel.GetTab()];
+        float speedMult = bottomPanel.IsHidden() ? 1.0f : 1.5f;
         transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * transitionSpeed * speedMult);
 
         // look towards `lookAtXZ` but only affect Y rotation

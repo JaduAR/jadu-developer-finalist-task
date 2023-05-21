@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour {
+
     [SerializeField]
     BottomPanel bottomPanel;
 
@@ -18,6 +17,7 @@ public class MainUI : MonoBehaviour {
     }
 
     public void OnCharacterClicked() {
+        // if in overview, transition to tabs
         if (bottomPanel.IsHidden()) {
             backButton.gameObject.SetActive(true);
             bottomPanel.SetTab(0);
@@ -26,6 +26,7 @@ public class MainUI : MonoBehaviour {
     }
 
     public void OnBackButton() {
+        // transition to overview
         bottomPanel.SetHidden(true);
         backButton.gameObject.SetActive(false);
     }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SkinTab
   m_EditorClassIdentifier: 
   label: SKIN
-  contentPrefab: {fileID: 1250233316527470274, guid: 91c2fa95dacd43a4e96ed1dd43e905fd, type: 3}
+  contentPrefab: {fileID: 3241100616827771356, guid: 91c2fa95dacd43a4e96ed1dd43e905fd, type: 3}
   panelHeight: 375

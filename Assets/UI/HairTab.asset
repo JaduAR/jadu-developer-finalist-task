@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: HairTab
   m_EditorClassIdentifier: 
   label: HAIR
-  contentPrefab: {fileID: 5904494247016118110, guid: 58b05fa5c7df05d4cb28ae1a512228d3, type: 3}
+  contentPrefab: {fileID: -5589984708036066115, guid: 58b05fa5c7df05d4cb28ae1a512228d3, type: 3}
   panelHeight: 500
