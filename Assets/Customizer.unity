@@ -953,7 +953,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674609004}
-  m_LocalRotation: {x: 0.024034418, y: 0.97479975, z: -0.13081868, w: 0.17909324}
+  m_LocalRotation: {x: 0.024034422, y: 0.97479975, z: -0.13081868, w: 0.17909326}
   m_LocalPosition: {x: -0.66, y: 0.85, z: 1.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2745,15 +2745,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grad:
-    serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
+    key0:
+      r: 0
+      g: 0
+      b: 0
+      a: 1
+    key1:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+    key2:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key3:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key4:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key5:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key6:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key7:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
     ctime0: 0
     ctime1: 65535
     ctime2: 0
@@ -2774,15 +2805,46 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   LastGrad:
-    serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
+    key0:
+      r: 0
+      g: 0
+      b: 0
+      a: 1
+    key1:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+    key2:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key3:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key4:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key5:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key6:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
+    key7:
+      r: 0
+      g: 0
+      b: 0
+      a: 0
     ctime0: 0
     ctime1: 65535
     ctime2: 0
@@ -2811,6 +2873,8 @@ MonoBehaviour:
   _gradientSizeY: 256
   _fixedAspect: 1
   outTexture: {fileID: 0}
+  path: 
+  gradientColours: []
 --- !u!114 &1616618159
 MonoBehaviour:
   m_ObjectHideFlags: 0
