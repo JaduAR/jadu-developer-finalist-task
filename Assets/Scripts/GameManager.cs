@@ -31,16 +31,8 @@ public class GameManager : MonoBehaviour
     public float CustomizationSelectionPanel_Y = -500;
     public List<GameObject> CustomizationPanelTabs = new List<GameObject>();// Will contain all the below tabs
 
-    [Header("Skin customization")]
-    public GameObject SkinCustomizationPanel;
-    public float SkinCustomizationPanel_Y = -250;
-
-    [Header("Hair customization")]
-    public GameObject HairCustomizationPanel;
-    public float HairCustomizationPanel_Y = 100;
-
     [Header("Tabs")]
-    public string CurrentTabTitle;
+    public CustomizationTabTitle CurrentTabTitle;
 
     // Hacky solution to couple tabs and their panels, not ideal, would work on this in the future
     public Dictionary<string, Action> TabTitleToFunctionDict = new Dictionary<string, Action>();
@@ -53,14 +45,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         if (!CameraManager) CameraManager = CameraManager.Instance;
-
-        CustomizationPanelTabs.Add(SkinCustomizationPanel);
-        CustomizationPanelTabs.Add(HairCustomizationPanel);
+        
         SetIdleState();
-
-        TabTitleToFunctionDict["Skin"] = SetSkinSelectState;
-        TabTitleToFunctionDict["Hair"] = SetHairSelectState;
-
     }
     public void SetIdleState()
     {
@@ -70,28 +56,16 @@ public class GameManager : MonoBehaviour
         CustomizationPanel.DOFade(0, FadeDuration);
         DisableTabs();
     }
-    public void SetSkinSelectState()
-    {
-        CameraManager.SwitchCamera(SkinCloseUpCam);
-        DoneButton.DOAnchorPosY(DoneButtonFinal_Y, FadeDuration);
-        CustomizationPanel.DOFade(1, FadeDuration);
-        EnableTab(SkinCustomizationPanel);
-        CustomizationSelectionPanel.DOAnchorPosY(SkinCustomizationPanel_Y, FadeDuration).SetEase(EaseStyle);
-    }
-    public void SetHairSelectState()
-    {
-        CameraManager.SwitchCamera(HairCloseUpCam);
-        DoneButton.DOAnchorPosY(DoneButtonFinal_Y, FadeDuration);
-        CustomizationPanel.DOFade(1, FadeDuration);
-        EnableTab(HairCustomizationPanel);
-        CustomizationSelectionPanel.DOAnchorPosY(HairCustomizationPanel_Y, FadeDuration).SetEase(EaseStyle);
-    }
 
     public void SetCustomizeState()
     {
         CustomizationPanel.gameObject.SetActive(true);
 
-        TabTitleToFunctionDict[CurrentTabTitle]();
+        CameraManager.SwitchCamera(CurrentTabTitle.CameraReference);
+        DoneButton.DOAnchorPosY(DoneButtonFinal_Y, FadeDuration);
+        CustomizationPanel.DOFade(1, FadeDuration);
+        EnableTab(CurrentTabTitle.PanelReference.gameObject);
+        CustomizationSelectionPanel.DOAnchorPosY(CurrentTabTitle.Panel_Y, FadeDuration).SetEase(EaseStyle);
     }
 
     /// <summary>

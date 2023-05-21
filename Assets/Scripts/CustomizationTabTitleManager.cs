@@ -21,12 +21,13 @@ public class CustomizationTabTitleManager : MonoBehaviour
 
     void Start()
     {// Default current to first tab
-        SetCurrentTab(customizationTabTitles[0]);
+        GameManager.Instance.CurrentTabTitle = customizationTabTitles[0];
     }
 
     public void AddCustomizationTabTitle(CustomizationTabTitle customizationTabTitle)
     {// Adding in reverse order bc Unity likes to Start() from bottom of hierarchy
         customizationTabTitles.Insert(0, customizationTabTitle);
+        GameManager.Instance.CustomizationPanelTabs.Insert(0, customizationTabTitle.PanelReference);
     }
 
     public void RemoveCustomizationTabTitle(CustomizationTabTitle customizationTabTitle)
@@ -42,6 +43,7 @@ public class CustomizationTabTitleManager : MonoBehaviour
         CurrentTab = customizationTabTitle;
         activePageIndicator.SetParent(CurrentTab.transform, worldPositionStays: false);
         activePageIndicator.DOAnchorPosX(0, 0.5f);       
-        GameManager.Instance.CurrentTabTitle = CurrentTab.Title.text;
+        GameManager.Instance.CurrentTabTitle = CurrentTab;
+        GameManager.Instance.SetCustomizeState();
     }
 }

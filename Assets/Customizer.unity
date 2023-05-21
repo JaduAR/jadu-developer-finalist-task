@@ -839,11 +839,7 @@ MonoBehaviour:
   CustomizationSelectionPanel: {fileID: 1750054824}
   CustomizationSelectionPanel_Y: -1000
   CustomizationPanelTabs: []
-  SkinCustomizationPanel: {fileID: 713089964}
-  SkinCustomizationPanel_Y: -250
-  HairCustomizationPanel: {fileID: 736584163}
-  HairCustomizationPanel_Y: 200
-  CurrentTabTitle: 
+  CurrentTabTitle: {fileID: 0}
 --- !u!4 &631628354
 Transform:
   m_ObjectHideFlags: 0
@@ -1519,18 +1515,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631628353}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetHairSelectState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 944527893}
         m_TargetAssemblyTypeName: CustomizationTabTitle, Assembly-CSharp
         m_MethodName: SetCurrent
@@ -1566,6 +1550,9 @@ MonoBehaviour:
   Title: {fileID: 864009713}
   Regular: {fileID: 11400000, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
   Bold: {fileID: 11400000, guid: a8c41eca10878d844b9e6b3c30052837, type: 2}
+  CameraReference: {fileID: 674609005}
+  PanelReference: {fileID: 736584163}
+  Panel_Y: 200
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,18 +1852,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631628353}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetSkinSelectState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1084788031}
         m_TargetAssemblyTypeName: CustomizationTabTitle, Assembly-CSharp
         m_MethodName: SetCurrent
@@ -1912,6 +1887,9 @@ MonoBehaviour:
   Title: {fileID: 1455569339}
   Regular: {fileID: 11400000, guid: f52a0bd2b59574f49b791cc57654a108, type: 2}
   Bold: {fileID: 11400000, guid: a8c41eca10878d844b9e6b3c30052837, type: 2}
+  CameraReference: {fileID: 1890856455}
+  PanelReference: {fileID: 713089964}
+  Panel_Y: -250
 --- !u!1 &1109707843
 GameObject:
   m_ObjectHideFlags: 3
