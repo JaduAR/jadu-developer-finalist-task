@@ -29,20 +29,20 @@ public class CameraController : MonoBehaviour
 
     private void Update() {
         Transform target = overviewTarget;
+        float speedMult = 1.0f;
 
         if (!bottomPanel.IsHidden()) {
             target = tabTargets[bottomPanel.GetTab()];
+            speedMult = 1.5f;
         }
 
-        transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * transitionSpeed * 1.25f);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, Time.deltaTime * transitionSpeed * 1.25f);
+        // move towards target
+        transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * transitionSpeed * speedMult);
 
+        // look towards `lookAtXZ` but only affect Y rotation
         Vector3 lookDelta = lookAtXZ.position - transform.position;
-        lookDelta.y = 0;
         Quaternion look = Quaternion.LookRotation(lookDelta);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, look.eulerAngles.y, transform.rotation.eulerAngles.z);
-
-        //transform.LookAt(new Vector3(lookAtXZ.position.x, transform.position.y, lookAtXZ.position.z));
     }
 
 }
