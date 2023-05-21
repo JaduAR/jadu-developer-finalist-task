@@ -227,7 +227,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4289437850
   m_fontColor: {r: 0.6039216, g: 0.627451, b: 0.67058825, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 3126898240221129975}
   - component: {fileID: 1126531573767337544}
   - component: {fileID: 6488119073574508540}
+  - component: {fileID: 165664203835356453}
   m_Layer: 5
   m_Name: HairStyleButton
   m_TagString: Untagged
@@ -432,3 +433,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &165664203835356453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205993190050887871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36eeaa847396b3241be2c7904e92bb61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 5765672501902617437}
+  preview: {fileID: 1484126831312119516}
