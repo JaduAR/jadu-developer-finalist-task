@@ -75,6 +75,8 @@ public class BottomPanel : MonoBehaviour
         this.hidden = hidden;
     }
 
+    public int GetTab() => this.currentTab;
+
     public void SetTab(int tab) {
         currentTab = Math.Clamp(tab, 0, tabs.Length - 1);
 
@@ -96,4 +98,6 @@ public class BottomPanel : MonoBehaviour
             tabSelectors[i].SetSelected(current);
         }
     }
+
+    public int NumTabs() => this.tabs.Length;
 }
