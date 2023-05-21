@@ -6,7 +6,7 @@ using TMPro;
 public class CustomizationTabTitle : MonoBehaviour
 {
     CustomizationTabTitleManager manager;
-    public TextMeshProUGUI title;
+    public TextMeshProUGUI Title;
     public TMP_FontAsset Regular;
     public TMP_FontAsset Bold;
     // Start is called before the first frame update
@@ -14,17 +14,16 @@ public class CustomizationTabTitle : MonoBehaviour
     {
         manager = transform.parent.parent.parent.GetComponent<CustomizationTabTitleManager>();
         manager.AddCustomizationTabTitle(this);
-
-        print(manager);
-        //title.font = 
     }
-public void SetCurrent()
+
+    public void SetCurrent()
     {
         manager.SetCurrentTab(this);
-        title.font = Bold;
+        Title.font = Bold;
     }
+
     public void UnSetCurrent()
     {
-        title.font = Regular;
+        Title.font = Regular;
     }
 }

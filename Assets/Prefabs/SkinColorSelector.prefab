@@ -192,9 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4334517a557b5324ca447604ebf65e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinColorManager: {fileID: 0}
   Color: {r: 0, g: 0, b: 0, a: 0}
   Image: {fileID: 1663634097209812036}
   RectTransform: {fileID: 4146993606360889053}
-  selectedSize: {x: 20, y: 20}
+  selectedSize: {x: 50, y: 50}
   deselectedSize: {x: 100, y: 100}

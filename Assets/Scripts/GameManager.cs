@@ -1,5 +1,6 @@
 using Cinemachine;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] CameraManager CameraManager = CameraManager.Instance;
+    [SerializeField] CustomizationTabTitleManager CustomizationTabTitleManager = CustomizationTabTitleManager.Instance;
 
-    public float FadeDuration = 0.5f;
+    [SerializeField] Ease EaseStyle = Ease.OutCirc;
+    [SerializeField] float FadeDuration = 0.5f;
 
     public CinemachineVirtualCamera IdleCam;
     public CinemachineVirtualCamera SkinCloseUpCam;
@@ -32,6 +35,9 @@ public class GameManager : MonoBehaviour
     public GameObject HairCustomizationPanel;
     public float HairCustomizationPanel_Y = 100;
 
+    public string CurrentTabTitle;
+    public Dictionary<string, Action> TabTitleToFunctionDict = new Dictionary<string, Action>();
+
 
     void Awake()
     {
@@ -45,12 +51,16 @@ public class GameManager : MonoBehaviour
         CustomizationPanelTabs.Add(SkinCustomizationPanel);
         CustomizationPanelTabs.Add(HairCustomizationPanel);
         SetIdleState();
+
+        TabTitleToFunctionDict["Skin"] = SetSkinSelectState;
+        TabTitleToFunctionDict["Hair"] = SetHairSelectState;
+
     }
     public void SetIdleState()
     {
         CameraManager.SwitchCamera(IdleCam);
         DoneButton.DOAnchorPosY(DoneButtonInitial_Y, FadeDuration);
-        CustomizationSelectionPanel.DOAnchorPosY(CustomizationSelectionPanel_Y, FadeDuration).SetEase(Ease.Linear);
+        CustomizationSelectionPanel.DOAnchorPosY(CustomizationSelectionPanel_Y, FadeDuration).SetEase(EaseStyle);
         CustomizationPanel.DOFade(0, FadeDuration);
         DisableTabs();
     }
@@ -61,8 +71,9 @@ public class GameManager : MonoBehaviour
         CustomizationPanel.DOFade(1, FadeDuration);
 
         EnableTab(SkinCustomizationPanel);
-        CustomizationSelectionPanel.DOAnchorPosY(SkinCustomizationPanel_Y, FadeDuration).SetEase(Ease.Linear);
+        CustomizationSelectionPanel.DOAnchorPosY(SkinCustomizationPanel_Y, FadeDuration).SetEase(EaseStyle);
         
+
     }
     public void SetHairSelectState()
     {
@@ -71,17 +82,14 @@ public class GameManager : MonoBehaviour
 
         CustomizationPanel.DOFade(1, FadeDuration);
         EnableTab(HairCustomizationPanel);
-        CustomizationSelectionPanel.DOAnchorPosY(HairCustomizationPanel_Y, FadeDuration).SetEase(Ease.Linear);
+        CustomizationSelectionPanel.DOAnchorPosY(HairCustomizationPanel_Y, FadeDuration).SetEase(EaseStyle);
     }
 
     public void SetCustomizeState()
     {
         CustomizationPanel.gameObject.SetActive(true);
-        SetSkinSelectState();
-        if (Input.GetMouseButtonDown(0))
-        {
-            print(Input.mousePosition);
-        }
+
+        TabTitleToFunctionDict[CurrentTabTitle]();
     }
     private void EnableTab(GameObject currentTab)
     {

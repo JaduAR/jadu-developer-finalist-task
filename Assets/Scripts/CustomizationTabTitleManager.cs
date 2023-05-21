@@ -5,11 +5,17 @@ using DG.Tweening;
 
 public class CustomizationTabTitleManager : MonoBehaviour
 {
+    public static CustomizationTabTitleManager Instance { get; private set; }
+
     [SerializeField] List<CustomizationTabTitle> customizationTabTitles = new List<CustomizationTabTitle>();
-    [SerializeField] CustomizationTabTitle currentTab;
+    public CustomizationTabTitle CurrentTab;
     [SerializeField] RectTransform tabUnderline;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         SetCurrentTab(customizationTabTitles[0]);
@@ -27,9 +33,10 @@ public class CustomizationTabTitleManager : MonoBehaviour
 
     public void SetCurrentTab(CustomizationTabTitle customizationTabTitle)
     {
-        if (currentTab) currentTab.UnSetCurrent();
-        currentTab = customizationTabTitle;
-        tabUnderline.parent = currentTab.transform;
+        if (CurrentTab) CurrentTab.UnSetCurrent();
+        CurrentTab = customizationTabTitle;
+        tabUnderline.parent = CurrentTab.transform;
         tabUnderline.DOAnchorPosX(0, 0.5f);
+        GameManager.Instance.CurrentTabTitle = CurrentTab.Title.text;
     }
 }

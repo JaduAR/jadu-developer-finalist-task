@@ -10,9 +10,6 @@ public class SkinColorSelectionManager : SelectionManager
     [SerializeField] Transform SkinColorContent;
     [SerializeField] List<GameObject> SkinColorSelectors = new List<GameObject>();
 
-    //public SkinColorSelector CurrentColor {get; private set;}
-
-    // Start is called before the first frame update
     void Start()
     {   
         foreach (var initialSkinColor in InitialSkinColors)

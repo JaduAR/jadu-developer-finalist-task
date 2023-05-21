@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class SkinColorSelector : CustomizationSelector
 {
     public Color Color;
-    public Image Image;
+    [SerializeField] Image Image;
     [SerializeField] RectTransform RectTransform;
 
     [SerializeField] Vector2 selectedSize = new Vector2(10, 10);
@@ -15,19 +16,19 @@ public class SkinColorSelector : CustomizationSelector
     // Start is called before the first frame update
     void Start()
     {
-        if (Image == null) Image = GetComponent<Image>();
+        if (Image == null) 
+            Image = GetComponent<Image>();
+
         Image.color = Color;
-
-
     }
 
     public override void OnSelect()
     {
         SelectionManager.SetSelection(this);
-        RectTransform.sizeDelta = selectedSize;
+        RectTransform.DOSizeDelta(selectedSize, EaseDuration).SetEase(EaseStyle);
     }
     public override void OnDeselect()
     {
-        RectTransform.sizeDelta = deselectedSize;
+        RectTransform.DOSizeDelta(deselectedSize, EaseDuration).SetEase(EaseStyle);
     }
 }
