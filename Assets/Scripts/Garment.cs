@@ -8,7 +8,7 @@ public enum GarementType
 /// <summary>
 /// garement for the avatar
 /// </summary>
-public class Garement : ScriptableObject
+public class Garment : ScriptableObject
 {
     public Color        garementColor;
     public GarementType garementType;

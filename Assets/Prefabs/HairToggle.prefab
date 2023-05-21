@@ -317,6 +317,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+  icon: {fileID: 1929231127899674927}
+  titleText: {fileID: 1929231128863635808}
 --- !u!1 &1929231128863635810
 GameObject:
   m_ObjectHideFlags: 0

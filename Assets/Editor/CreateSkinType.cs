@@ -6,8 +6,8 @@ public class CreateSkinType
     [MenuItem("Assets/Create/Skin Type")]
     public static void CreateASkinType()
     {
-        Garement playerScriptableObject = ScriptableObject.CreateInstance
-            <Garement>();
+        Garment playerScriptableObject = ScriptableObject.CreateInstance
+            <Garment>();
         playerScriptableObject.garementType = GarementType.SKIN;
         string uniqueName = AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/skin.asset");
         AssetDatabase.CreateAsset(playerScriptableObject, uniqueName);

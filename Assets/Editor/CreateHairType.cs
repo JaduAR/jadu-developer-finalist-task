@@ -6,8 +6,8 @@ public class CreateHairType : MonoBehaviour
     [MenuItem("Assets/Create/Hair Type")]
     public static void CreateAHairType()
     {
-        Garement playerScriptableObject = ScriptableObject.CreateInstance
-            <Garement>();
+        Garment playerScriptableObject = ScriptableObject.CreateInstance
+            <Garment>();
         playerScriptableObject.garementType = GarementType.HAIR;
         string uniqueName = AssetDatabase.GenerateUniqueAssetPath("Assets/ScriptableObjects/hair.asset");
         AssetDatabase.CreateAsset(playerScriptableObject, uniqueName);
