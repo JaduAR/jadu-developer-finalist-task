@@ -6,11 +6,9 @@ using UnityEngine.UI;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    public Button               doneButton;
-    public InventoryScrollView  skinSelection;
-    public InventoryScrollView  hairSelection;
-    public Garment[]            skins;
-    public Garment[]            hair;
+    public Button                           doneButton;
+    public GarmentTabScriptableObject[]     garmentTabsObjects;
+    public Transform                        garmentTabsParent;
 
     void Start()
     {
@@ -18,13 +16,18 @@ public class UIManager : MonoBehaviour
         {
             doneButton.onClick.AddListener(DoneClicked);
         }
-        if(skinSelection != null && skins!= null)
+        if(garmentTabsParent != null)
         {
-            skinSelection.CreateIcons(skins);
-        }
-        if (hairSelection != null && hair != null)
-        {
-            hairSelection.CreateIcons(hair);
+            for (int i = 0; i < garmentTabsObjects.Length; i++)
+            {
+                InventoryScrollView inventoryScrollView = Instantiate(garmentTabsObjects[i].InventoryScrollView);
+                inventoryScrollView.gameObject.transform.SetParent(garmentTabsParent);
+                inventoryScrollView.CreateIcons(garmentTabsObjects[i].garments);
+
+                RectTransform rect = inventoryScrollView.GetComponent<RectTransform>();
+                rect.SetTop(150);
+                rect.SetRight(0);
+            }
         }
     }
 

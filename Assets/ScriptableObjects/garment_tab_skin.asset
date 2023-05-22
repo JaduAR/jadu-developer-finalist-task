@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b8eb6b9b40044ba989e1b1ce3646d7, type: 3}
+  m_Name: garment_tab_skin
+  m_EditorClassIdentifier: 
+  garementType: 1
+  garments:
+  - {fileID: 11400000, guid: 657a2aab7b3d3456581935abc77737f9, type: 2}
+  - {fileID: 11400000, guid: 5ddd94f12302448eb9430de0a3de837d, type: 2}
+  - {fileID: 11400000, guid: d4794414ee5934d65a0593ad0aa77895, type: 2}
+  - {fileID: 11400000, guid: d476de066002d4062baa5c9644cee61b, type: 2}
+  - {fileID: 11400000, guid: ac99e34b63a3c4c99b64952bf80e9447, type: 2}
+  - {fileID: 11400000, guid: bfaf8bd0110b34dc9be7d75cbece5f30, type: 2}
+  - {fileID: 11400000, guid: d9f8de2b3ee0f44bcbc9ead0722ca961, type: 2}
+  - {fileID: 11400000, guid: 986e925aa73854be29c8fcf43f7a4c68, type: 2}
+  InventoryScrollView: {fileID: 1702451958170016584, guid: e50c2cbd0167b4c63a9b0cc155f001f9, type: 3}
+  height: 0

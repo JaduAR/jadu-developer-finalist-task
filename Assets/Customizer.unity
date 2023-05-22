@@ -886,24 +886,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doneButton: {fileID: 2117701713}
-  skinSelection: {fileID: 5671415070818700931}
-  hairSelection: {fileID: 6557477817029418304}
-  skins:
-  - {fileID: 11400000, guid: 657a2aab7b3d3456581935abc77737f9, type: 2}
-  - {fileID: 11400000, guid: 5ddd94f12302448eb9430de0a3de837d, type: 2}
-  - {fileID: 11400000, guid: d4794414ee5934d65a0593ad0aa77895, type: 2}
-  - {fileID: 11400000, guid: d476de066002d4062baa5c9644cee61b, type: 2}
-  - {fileID: 11400000, guid: ac99e34b63a3c4c99b64952bf80e9447, type: 2}
-  - {fileID: 11400000, guid: bfaf8bd0110b34dc9be7d75cbece5f30, type: 2}
-  - {fileID: 11400000, guid: d9f8de2b3ee0f44bcbc9ead0722ca961, type: 2}
-  - {fileID: 11400000, guid: 986e925aa73854be29c8fcf43f7a4c68, type: 2}
-  hair:
-  - {fileID: 11400000, guid: a735ecfd3acad43edb0b90661c5bf4f9, type: 2}
-  - {fileID: 11400000, guid: 0c4d472dd48244f6b9b8042aeff16867, type: 2}
-  - {fileID: 11400000, guid: 69c7fcc11c1cd42f8a47f226b8dcb3a1, type: 2}
-  - {fileID: 11400000, guid: d5d37dd3d6ab8478aacbc108374d2d1e, type: 2}
-  - {fileID: 11400000, guid: 7436b0cf38261403f9de44399b66eb29, type: 2}
-  - {fileID: 11400000, guid: 0724d2943bb8d423798c17aa4f22f7eb, type: 2}
+  garmentTabsObjects:
+  - {fileID: 11400000, guid: 39dc622701e694ad68fb53ce54f2c23a, type: 2}
+  - {fileID: 11400000, guid: 9be6ccb6f859049bcad3102a2187a679, type: 2}
+  garmentTabsParent: {fileID: 62581460}
 --- !u!1 &802290560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,17 +2514,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c2cbd0167b4c63a9b0cc155f001f9, type: 3}
---- !u!114 &5671415070818700931 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1702451958170016584, guid: e50c2cbd0167b4c63a9b0cc155f001f9, type: 3}
-  m_PrefabInstance: {fileID: 5671415070818700930}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0428e55062c844bf0909c2bd2d5a1822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6557477817029418303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2660,14 +2635,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 795603fd50d7740339c7039144a90b14, type: 3}
---- !u!114 &6557477817029418304 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 91628024928534195, guid: 795603fd50d7740339c7039144a90b14, type: 3}
-  m_PrefabInstance: {fileID: 6557477817029418303}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0428e55062c844bf0909c2bd2d5a1822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
