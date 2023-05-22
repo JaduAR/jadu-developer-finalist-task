@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6557477815435118100
 RectTransform:
   m_ObjectHideFlags: 0
@@ -356,9 +356,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 6557477817465083219}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 1929231128816618694, guid: cc5aaf17838d04cc7b236d5b179d3123, type: 3}
+  viewPort: {fileID: 6557477815435118101}
   contentParent: {fileID: 6557477816846092916}
   toggleGroup: {fileID: 6557477816846092914}
 --- !u!1 &6557477816767620812

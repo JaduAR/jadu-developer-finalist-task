@@ -10,6 +10,7 @@ public class InventoryScrollView : MonoBehaviour
     /// the prefab for the icon
     /// </summary>
     public GameObject           iconPrefab;
+    public GameObject           viewPort;
     /// <summary>
     /// the grid
     /// </summary>
@@ -52,6 +53,10 @@ public class InventoryScrollView : MonoBehaviour
 
     void HideAndShowTab(bool selected)
     {
+        if(viewPort != null)
+        {
+            viewPort.SetActive(selected);
+        }
         if(contentParent == null)
         {
             return;

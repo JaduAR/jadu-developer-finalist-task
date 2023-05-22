@@ -239,6 +239,7 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 0
   icon: {fileID: 8492137037723295780}
+  animateTarget: {fileID: 3608498211043162740}
 --- !u!1 &6191474764009835853
 GameObject:
   m_ObjectHideFlags: 0

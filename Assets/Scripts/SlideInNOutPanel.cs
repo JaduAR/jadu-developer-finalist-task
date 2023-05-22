@@ -1,17 +1,15 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
 public class SlideInNOutPanel : MonoBehaviour
 {
-    Guid    uid;
     float   _duration = 0.5f;
 
     public void Animate(float yPos)
     {
         if (DOTween.IsTweening(gameObject))
         {
-            DOTween.Kill(uid);
+            DOTween.Kill(gameObject);
         }
 
         RectTransform rect = transform as RectTransform;

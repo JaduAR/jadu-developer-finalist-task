@@ -65,11 +65,16 @@ public class UIManager : MonoBehaviour
     {
         if(_categoryToggles.Count>0)
         {
+            _categoryToggles[0].isOn = true;
             _categoryToggles[0].Show();
         }
         if (startButton != null)
         {
             startButton.gameObject.SetActive(false);
+        }
+        if (doneButton != null)
+        {
+            doneButton.gameObject.SetActive(true);
         }
     }
 
@@ -86,6 +91,10 @@ public class UIManager : MonoBehaviour
         if(_inventoryAnimation != null)
         {
             _inventoryAnimation.Animate(_inventoryHiddenY);
+        }
+        if(doneButton!=null)
+        {
+            doneButton.gameObject.SetActive(false);
         }
     }
 

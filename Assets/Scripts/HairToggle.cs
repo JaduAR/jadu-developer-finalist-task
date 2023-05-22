@@ -50,7 +50,7 @@ public class HairToggle : Toggle, IGarmentUIToggle
         if(icon != null)
         {
             icon.color = new Color(1, 1, 1, 0.2f);
-        }    
+        }
     }
 
     public void CreateToggle(Garment garment, ToggleGroup toggleGroup,
