@@ -22,5 +22,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0724d2943bb8d423798c17aa4f22f7eb, type: 2}
   InventoryScrollView: {fileID: 91628024928534195, guid: 795603fd50d7740339c7039144a90b14, type: 3}
   height: 0
-  cameraPos: {x: 0.323, y: 1.067, z: -0.382}
-  cameraRotation: {x: -3.322, y: -40.813, z: 2.865}
+  cameraPos: {x: 0.329, y: 1.02, z: -0.373}
+  cameraRotation: {x: 0.077, y: -40.752, z: 0}

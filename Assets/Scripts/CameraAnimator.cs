@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CameraAnimator : Singleton<CameraAnimator>
 {
-    Vector3 _startPos = new Vector3(0, 0.82f, -1.5f);
+    Vector3 _startPos = new Vector3(0, 0.8f, -1.5f);
     Guid    uid;
     float   _duration = 1;
     void Start()
@@ -38,6 +38,9 @@ public class CameraAnimator : Singleton<CameraAnimator>
         s.Play();
     }
 
+    /// <summary>
+    /// move camera to starting pos
+    /// </summary>
     public void MoveToStart()
     {
         AnimateCamera(Vector3.zero, _startPos);

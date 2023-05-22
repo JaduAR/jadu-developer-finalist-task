@@ -17,11 +17,6 @@ public class InventoryScrollView : MonoBehaviour
     public ToggleGroup          toggleGroup;
     Toggle                      _toggleTab;
     /// <summary>
-    /// keeps info about the tab
-    /// </summary>
-    GarmentTabScriptableObject  _tabObj;
-
-    /// <summary>
     /// 
     /// </summary>
     /// <param name="garments"></param>
@@ -30,7 +25,6 @@ public class InventoryScrollView : MonoBehaviour
     public void SetUp(GarmentTabScriptableObject tabObj, Toggle toggleTab,
         bool show)
     {
-        _tabObj = tabObj;
         if (iconPrefab != null)
         {
             for (int i = 0; i < tabObj.garments.Length; i++)
@@ -63,11 +57,6 @@ public class InventoryScrollView : MonoBehaviour
             return;
         }
         contentParent.gameObject.SetActive(selected);
-        if(_tabObj!= null && CameraAnimator.Instance != null && selected)
-        {
-            CameraAnimator.Instance.AnimateCamera(_tabObj.cameraRotation,
-                _tabObj.cameraPos);
-        }
     }
 
     void OnDestroy()
