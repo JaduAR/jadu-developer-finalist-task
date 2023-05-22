@@ -51,6 +51,7 @@ public class UIManager : MonoBehaviour
 
                 InventoryScrollView inventoryScrollView = Instantiate(garmentTabsObjects[i].InventoryScrollView);
                 inventoryScrollView.gameObject.transform.SetParent(garmentTabsParent);
+                inventoryScrollView.transform.localScale = Vector3.one;
                 inventoryScrollView.SetUp(garmentTabsObjects[i],c
                     , i==0);
 
