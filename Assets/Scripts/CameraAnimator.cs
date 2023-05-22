@@ -7,9 +7,12 @@ using UnityEngine;
 /// </summary>
 public class CameraAnimator : Singleton<CameraAnimator>
 {
-    Vector3 _startPos = new Vector3(0, 0.8f, -1.5f);
+    Vector3 _startPos           = new Vector3(0, 0.8f, -1.5f);
     Guid    uid;
-    float   _duration = 1;
+    float   _duration           = 1;
+    float   _startFiledOfView   = 70;
+    const   float               _closeupFiledOfView = 20;
+
     void Start()
     {
         transform.position = _startPos;
@@ -20,7 +23,8 @@ public class CameraAnimator : Singleton<CameraAnimator>
     /// </summary>
     /// <param name="rotation"></param>
     /// <param name="pos"></param>
-    public void AnimateCamera(Vector3 rotation, Vector3 pos)
+    public void AnimateCamera(Vector3 rotation, Vector3 pos,
+        float filedOfView = _closeupFiledOfView)
     {
         if(DOTween.IsTweening(gameObject))
         {
@@ -32,10 +36,19 @@ public class CameraAnimator : Singleton<CameraAnimator>
         s.Join(transform.DORotate(rotation, _duration));
         s.SetEase(Ease.OutCubic);
 
+        float valFloat = Camera.main.fieldOfView;
+        DOTween.To(() => valFloat, x => valFloat = x, filedOfView, 1f)
+            .OnUpdate(() => { UpdateFiledOfView(valFloat);});
+
         uid = Guid.NewGuid();
         s.id = uid;
 
         s.Play();
+    }
+
+    void UpdateFiledOfView(float v)
+    {
+        Camera.main.fieldOfView = v;
     }
 
     /// <summary>
@@ -43,6 +56,6 @@ public class CameraAnimator : Singleton<CameraAnimator>
     /// </summary>
     public void MoveToStart()
     {
-        AnimateCamera(Vector3.zero, _startPos);
+        AnimateCamera(Vector3.zero, _startPos, _startFiledOfView);
     }
 }
