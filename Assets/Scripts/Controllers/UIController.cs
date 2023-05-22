@@ -2,19 +2,17 @@
 // Onur EREREN - May 2023
 // ----------------------
 
-// Jadu UI Technical Task UI Controller
+// Jadu UI Technical Task - UI Controller Script
 // Controls UI actions
 
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EaseLibrary;
 using System;
 
 namespace TechTask
 {
-
     public class UIController : MonoBehaviour
     {
         #region DECLARATIONS
@@ -26,6 +24,8 @@ namespace TechTask
         private HairStylePicker _hairStylePicker;
 
         #endregion
+
+        #region Drawers
 
         [Header("DRAWERS")]
         [SerializeField]
@@ -43,55 +43,55 @@ namespace TechTask
         [SerializeField]
         private Transform[] _bottomDrawerPositions;
 
-        [Header("MISC")]
-        [SerializeField]
-        private GameObject _fullScreenButton;
+        #endregion
 
+        #region Selectors
 
+        [Header("SKIN COLOR SELECTOR")]
         [SerializeField]
         private GameObject _skinColorButtonPrefab;
 
+        [Space(5)]
+        [SerializeField]
+        private GameObject _skinColorParent;
         [SerializeField]
         private RectTransform _skinScrollContent;
 
+        private SkinColorButton[] _skinColorButtons;
 
+        [Header("HAIR STYLE SELECTOR")]
         [SerializeField]
         private GameObject _hairStyleButtonPrefab;
 
+        [Space(5)]
+        [SerializeField]
+        private GameObject _hairStyleParent;
         [SerializeField]
         private RectTransform _hairScrollContent;
 
-        private SkinColorButton[] _skinColorButtons;
-
         private HairStyleButton[] _hairStyleButtons;
 
+        #endregion
+
+        #region Variables & Misc
+
+        [Header("MISC")]
         [SerializeField]
-        private float _menuChangeDuration;
+        private GameObject _fullScreenButton;
 
         [SerializeField]
         private EaseType _easeType;
 
         [SerializeField]
-        private int _skinButtonSize;
-        [SerializeField]
-        private int _skinButtonGap;
+        private float _menuChangeDuration;
+
         [SerializeField]
         private float _skinButtonSelectedScale;
+
         [SerializeField]
         private float _skinButtonScaleDuration;
 
-        [SerializeField]
-        private int _hairButtonSize;
-        [SerializeField]
-        private int _hairButtonGap;
-
-        private const int HairStyleColumns = 3;
-
-        [SerializeField]
-        private GameObject _skinColorParent;
-
-        [SerializeField]
-        private GameObject _hairStyleParent;
+        #endregion
 
         #endregion
 
@@ -118,7 +118,6 @@ namespace TechTask
 
         #endregion
 
-
         #region METHODS
 
         #region Setup Skin and Hair Windows
@@ -127,10 +126,6 @@ namespace TechTask
         {
             SkinColorPalette colorPalette = _skinColorPicker.skinPalette;
             int numberOfButtons = colorPalette.SkinColors.Length;
-
-            float contentWidth = numberOfButtons * (_skinButtonSize + _skinButtonGap) + _skinButtonGap;
-            _skinScrollContent.sizeDelta = new Vector2(contentWidth, _skinScrollContent.sizeDelta.y);
-
             _skinColorButtons = new SkinColorButton[numberOfButtons];
 
             for (int i=0; i<numberOfButtons; i++) 
@@ -150,12 +145,6 @@ namespace TechTask
         private void SetupHairStyleWindow()
         {
             int numberOfButtons = _hairStylePicker.HairStyles.Length;
-
-            int numberOfRows = (numberOfButtons / HairStyleColumns) + (numberOfButtons % HairStyleColumns) == 0 ? 0 : 1;
-
-            float contentHeight = numberOfRows * (_hairButtonSize +_hairButtonGap) + _hairButtonGap;
-            _hairScrollContent.sizeDelta = new Vector2(_hairScrollContent.sizeDelta.x, contentHeight);
-
             _hairStyleButtons = new HairStyleButton[numberOfButtons];
 
             for (int i=0; i<numberOfButtons; ++i)

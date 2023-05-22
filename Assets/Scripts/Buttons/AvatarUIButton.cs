@@ -5,8 +5,6 @@
 // Jadu UI Technical Task UI Controller
 // Controls UI actions
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -41,8 +39,6 @@ public class AvatarUIButton : MonoBehaviour
     }
 
     #endregion
-
-
 
     #region METHODS
 

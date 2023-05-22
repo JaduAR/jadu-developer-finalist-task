@@ -2,7 +2,9 @@
 // Onur Ereren - April 2022
 // ------------------------
 
-// Ease calculation script
+// Ease calculation script.
+// Allows for evaluation of values between 0-1 according to selected easing.
+// Mathematical formulas obtained from: https://easings.net/
 
 using UnityEngine;
 

@@ -1,9 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+// ----------------------
+// Onur EREREN - May 2023
+// ----------------------
+
+// Jadu UI Technical Task - Hair Style Button Script
+// Controls hair style button activation & deactivation
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using TechTask;
 
 namespace TechTask {
 

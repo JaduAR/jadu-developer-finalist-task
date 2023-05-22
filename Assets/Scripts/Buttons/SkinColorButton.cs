@@ -1,81 +1,87 @@
+// ----------------------
+// Onur EREREN - May 2023
+// ----------------------
+
+// Jadu UI Technical Task - Skin Color Button Script
+// Controls skin color button activation & deactivation
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EaseLibrary;
 using UnityEngine.UI;
-using TechTask;
 
-public class SkinColorButton : MonoBehaviour
+namespace TechTask
 {
-    #region REFERENCES
-
-    private UIController _uiController;
-
-    #endregion
-
-    #region VARIABLES
-
-    private int _index;
-    private float _minimizedScale;
-    private float _scaleDuration ;
-    private EaseType _easeType;
-    private Color _buttonColor;
-
-    #endregion
-
-
-
-    #region METHODS
-
-    public void SetupButton(UIController controller, int index, float minimizedScale, float scaleDuration, EaseType buttonEase, Color buttonColor)
+    public class SkinColorButton : MonoBehaviour
     {
-        _uiController = controller;
+        #region REFERENCES
 
-        _index = index; 
-        _minimizedScale = minimizedScale;
-        _scaleDuration = scaleDuration;
-        _easeType = buttonEase;
-        _buttonColor = buttonColor;
+        private UIController _uiController;
 
-        GetComponent<Image>().color = buttonColor;
-    }
+        #endregion
 
-    public void Activate()
-    {
-        StartCoroutine(ScaleButton(_minimizedScale));
-        _uiController.SkinButtonClicked(_index);
-    }
+        #region VARIABLES
 
-    public void Deactivate()
-    {
-        StartCoroutine(ScaleButton(1f));
-    }
+        private int _index;
+        private float _minimizedScale;
+        private float _scaleDuration;
+        private EaseType _easeType;
+        private Color _buttonColor;
 
-    #endregion
+        #endregion
 
-    #region COROUTINES
+        #region METHODS
 
-    private IEnumerator ScaleButton(float finalScale)
-    {
-        float startScale = transform.localScale.x;
-        float endScale = finalScale;
-
-        float timer = 0f;
-
-        while (timer < _scaleDuration)
+        public void SetupButton(UIController controller, int index, float minimizedScale, float scaleDuration, EaseType buttonEase, Color buttonColor)
         {
-            timer += Time.deltaTime;
-            float lerp = timer / _scaleDuration;
-            float clampedLerp = Mathf.Clamp(lerp, 0f, 1f);
-            float easedLerp = KinematicEase.Evaluate(_easeType, clampedLerp);
+            _uiController = controller;
 
-            transform.localScale = Vector3.one * Mathf.Lerp(startScale, finalScale, easedLerp);
+            _index = index;
+            _minimizedScale = minimizedScale;
+            _scaleDuration = scaleDuration;
+            _easeType = buttonEase;
+            _buttonColor = buttonColor;
 
-            yield return null;
+            GetComponent<Image>().color = buttonColor;
         }
 
+        public void Activate()
+        {
+            StartCoroutine(ScaleButton(_minimizedScale));
+            _uiController.SkinButtonClicked(_index);
+        }
+
+        public void Deactivate()
+        {
+            StartCoroutine(ScaleButton(1f));
+        }
+
+        #endregion
+
+        #region COROUTINES
+
+        private IEnumerator ScaleButton(float finalScale)
+        {
+            float startScale = transform.localScale.x;
+            float endScale = finalScale;
+
+            float timer = 0f;
+
+            while (timer < _scaleDuration)
+            {
+                timer += Time.deltaTime;
+                float lerp = timer / _scaleDuration;
+                float clampedLerp = Mathf.Clamp(lerp, 0f, 1f);
+                float easedLerp = KinematicEase.Evaluate(_easeType, clampedLerp);
+
+                transform.localScale = Vector3.one * Mathf.Lerp(startScale, finalScale, easedLerp);
+
+                yield return null;
+            }
+
+        }
+
+        #endregion
+
     }
-
-    #endregion
-
 }

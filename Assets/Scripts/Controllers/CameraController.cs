@@ -2,7 +2,7 @@
 // Onur EREREN - May 2023
 // ----------------------
 
-// Jadu UI Technical Task Camera Controller
+// Jadu UI Technical Task  - Camera Controller Script
 // Moves camera between points with the ease option selected (EaseInOutSine is default).
 
 using System.Collections;
