@@ -19,16 +19,24 @@ public class HairToggle : Toggle, IGarmentUIToggle
     /// </summary>
     public Color            unSelectedColor;
 
-    public override void OnDeselect(BaseEventData eventData)
+    protected override void Start()
     {
-        base.OnDeselect(eventData);
-        if (titleText != null)
+        base.Start();
+        onValueChanged.AddListener(FadeOutUI);
+    }
+
+    void FadeOutUI(bool selected)
+    {
+        if(!selected)
         {
-            titleText.color = unSelectedColor;
-        }
-        if (icon != null)
-        {
-            icon.color = Color.white;
+            if (titleText != null)
+            {
+                titleText.color = unSelectedColor;
+            }
+            if (icon != null)
+            {
+                icon.color = Color.white;
+            }
         }
     }
 
@@ -61,5 +69,11 @@ public class HairToggle : Toggle, IGarmentUIToggle
         {
             Select();
         }
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        onValueChanged.RemoveAllListeners();
     }
 }

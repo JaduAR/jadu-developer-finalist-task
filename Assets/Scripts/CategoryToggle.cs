@@ -25,6 +25,20 @@ public class CategoryToggle : Toggle
     /// </summary>
     float                   _endY;
 
+    protected override void Start()
+    {
+        base.Start();
+        onValueChanged.AddListener(ChangeTextColor);
+    }
+
+    void ChangeTextColor(bool isOn)
+    {
+        if (label != null)
+        {
+            label.color = isOn?selectedColor:unSelectedColor;
+        }
+    }
+
     /// <summary>
     /// set up with the tab with infos
     /// </summary>
@@ -48,24 +62,6 @@ public class CategoryToggle : Toggle
         group = toggleGroup;
     }
 
-    public override void OnDeselect(BaseEventData eventData)
-    {
-        base.OnDeselect(eventData);
-        if (label != null)
-        {
-            label.color = unSelectedColor;
-        }
-    }
-
-    public override void OnSelect(BaseEventData eventData)
-    {
-        base.OnSelect(eventData);
-        if (label != null)
-        {
-            label.color = selectedColor;
-        }
-    }
-
     /// <summary>
     /// easy in the panel and animate the camera
     /// </summary>
@@ -77,11 +73,19 @@ public class CategoryToggle : Toggle
         {
             _inventoryAnimation.Animate(_endY);
         }
+        ChangeTextColor(true);
     }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
         Show();
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        onValueChanged.RemoveAllListeners();
     }
 }
