@@ -18,6 +18,20 @@ public class CategoryToggle : Toggle
     /// </summary>
     public Color            unSelectedColor;
 
+    /// <summary>
+    /// set up with the tab name
+    /// </summary>
+    /// <param name="tabName"></param>
+    /// <param name="toggleGroup"></param>
+    public void SetUp(string tabName, ToggleGroup toggleGroup)
+    {
+        if(label!=null)
+        {
+            label.text = tabName;
+        }
+        group = toggleGroup;
+    }
+
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
