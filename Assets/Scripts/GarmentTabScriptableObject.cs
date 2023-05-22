@@ -9,4 +9,6 @@ public class GarmentTabScriptableObject : ScriptableObject
     /// expanded height
     /// </summary>
     public float                height;
+    public Vector3              cameraPos;
+    public Vector3              cameraRotation;
 }

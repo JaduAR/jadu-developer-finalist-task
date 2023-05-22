@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
 
                 InventoryScrollView inventoryScrollView = Instantiate(garmentTabsObjects[i].InventoryScrollView);
                 inventoryScrollView.gameObject.transform.SetParent(garmentTabsParent);
-                inventoryScrollView.SetUp(garmentTabsObjects[i].garments,c
+                inventoryScrollView.SetUp(garmentTabsObjects[i],c
                     , i==0);
 
                 RectTransform rect = inventoryScrollView.GetComponent<RectTransform>();

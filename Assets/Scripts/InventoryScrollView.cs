@@ -9,13 +9,17 @@ public class InventoryScrollView : MonoBehaviour
     /// <summary>
     /// the prefab for the icon
     /// </summary>
-    public GameObject       iconPrefab;
+    public GameObject           iconPrefab;
     /// <summary>
     /// the grid
     /// </summary>
-    public Transform        contentParent;
-    public ToggleGroup      toggleGroup;
-    Toggle _toggleTab;
+    public Transform            contentParent;
+    public ToggleGroup          toggleGroup;
+    Toggle                      _toggleTab;
+    /// <summary>
+    /// keeps info about the tab
+    /// </summary>
+    GarmentTabScriptableObject  _tabObj;
 
     /// <summary>
     /// 
@@ -23,18 +27,19 @@ public class InventoryScrollView : MonoBehaviour
     /// <param name="garments"></param>
     /// <param name="toggleTab"></param>
     /// <param name="show"></param>
-    public void SetUp(Garment[] garments, Toggle toggleTab,
+    public void SetUp(GarmentTabScriptableObject tabObj, Toggle toggleTab,
         bool show)
     {
-        if(iconPrefab != null)
+        _tabObj = tabObj;
+        if (iconPrefab != null)
         {
-            for (int i = 0; i < garments.Length; i++)
+            for (int i = 0; i < tabObj.garments.Length; i++)
             {
                 GameObject icon = Instantiate(iconPrefab);
                 IGarmentUIToggle garmentToggle = icon.GetComponent<IGarmentUIToggle>();
                 if(garmentToggle != null && toggleGroup != null)
                 {
-                    garmentToggle.CreateToggle(garments[i], toggleGroup,
+                    garmentToggle.CreateToggle(tabObj.garments[i], toggleGroup,
                         i==0);
                     if(contentParent != null)
                     {
@@ -58,6 +63,11 @@ public class InventoryScrollView : MonoBehaviour
             return;
         }
         contentParent.gameObject.SetActive(selected);
+        if(_tabObj!= null && CameraAnimator.Instance != null && selected)
+        {
+            CameraAnimator.Instance.AnimateCamera(_tabObj.cameraRotation,
+                _tabObj.cameraPos);
+        }
     }
 
     void OnDestroy()
