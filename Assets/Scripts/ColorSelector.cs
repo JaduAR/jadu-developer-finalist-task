@@ -6,24 +6,40 @@ using UnityEngine.UI;
 public class ColorSelector : Selector
 {
    [Header("Component References")]
-   [SerializeField] private Image buttonImage;
+   [SerializeField] private Image _buttonImage;
    [Header("Properties")]
-   [SerializeField] private float _shrinkSize;
+   [SerializeField] private float _shrinkSize = 0.25f;
+   [SerializeField] private float _tweenDuration = 0.1f;
+   [SerializeField] private AnimationCurve _TweenCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
    public void SetColor(Color skinColor)
    {
-      buttonImage.color = skinColor;
+      _buttonImage.color = skinColor;
    }
 
    //This is called when the button is clicked. Hooked in by Unity Event.
    public override void Select()
    {
-      transform.localScale = Vector3.one * 0.25f;
+      StartCoroutine(ScaleTween(Vector3.one * _shrinkSize, _tweenDuration));
       owner.SetActiveItem(this);
    }
 
    public override void Deselect()
    {
-      transform.localScale = Vector3.one;
+      StartCoroutine(ScaleTween(Vector3.one, _tweenDuration));
+   }
+   
+   private IEnumerator ScaleTween(Vector3 targetScale, float duration)
+   {
+      var startScale = transform.localScale;
+      var elapsedTime = 0f;
+      while (elapsedTime < duration)
+      {
+         var t = _TweenCurve.Evaluate(elapsedTime / duration);
+         transform.localScale = Vector3.Lerp(startScale, targetScale, t);
+         elapsedTime += Time.deltaTime;
+         yield return new WaitForEndOfFrame();
+      }
+      transform.localScale = targetScale;
    }
 }
