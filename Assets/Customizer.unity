@@ -1872,6 +1872,7 @@ GameObject:
   - component: {fileID: 1228145407}
   - component: {fileID: 1228145409}
   - component: {fileID: 1228145408}
+  - component: {fileID: 1228145410}
   m_Layer: 5
   m_Name: UINavigationBar
   m_TagString: Untagged
@@ -1934,6 +1935,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228145406}
   m_CullTransparentMesh: 1
+--- !u!95 &1228145410
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228145406}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc307a9518a34e24e8376c96758329d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1239391145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,8 +2687,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25.08, y: 78.1}
-  m_SizeDelta: {x: 164.58096, y: 80.9}
+  m_AnchoredPosition: {x: -9.81, y: 78.1}
+  m_SizeDelta: {x: 149.3111, y: 80.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1486530851
 MonoBehaviour:
@@ -2682,7 +2703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 15
+    m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
