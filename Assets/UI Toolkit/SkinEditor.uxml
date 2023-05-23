@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/EditingMenu.uss?fileID=7433441132597879392&amp;guid=cde104bba9dea5a40b7f8ca2a3c6bda9&amp;type=3#EditingMenu" />
+    <BH.UIElements.DragScrollView mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" name="SkinEditorList">
+        <ui:Button display-tooltip-when-elided="true" name="SkinSelectionButton" class="skin-selection-button">
+            <ui:VisualElement name="Circle" class="skin-selection-button-circle" style="min-width: auto; min-height: auto; width: 100%; height: 100%; transition-duration: 0.1s;" />
+        </ui:Button>
+    </BH.UIElements.DragScrollView>
+</ui:UXML>
