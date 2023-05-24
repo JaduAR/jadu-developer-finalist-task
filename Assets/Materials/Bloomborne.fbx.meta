@@ -3,7 +3,27 @@ guid: 9cb3ba4c57ba34a62a559444b040dd62
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 11377ea059d6e4b4da10b50cda1b60b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: 9ce45da97fa47324086e0a007f1f43d8, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bloomBorne_Body_BaseColor
+    second: {fileID: 2800000, guid: a529b5b06cf15ce40a7e3f98b0413a38, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bloomBorne_Hairs_BaseColor
+    second: {fileID: 2800000, guid: 3d718bce6b008d54497f4a20c4fbd54b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
