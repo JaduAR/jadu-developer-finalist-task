@@ -14,10 +14,16 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI selectHairstyleButtonText;
     public GameObject selectHairstyleWindow;
     public GameObject doneButton;
+    public GameObject mainCamera;
+    private Animator cameraAnimator;
+    public GameObject uiNavigationBar;
+    private Animator uiNavigationBarAnimator;
 
     void Start()
     {
         uiWindowAnimator = uiWindow.GetComponent<Animator>();
+        cameraAnimator = mainCamera.GetComponent<Animator>();
+        uiNavigationBarAnimator = uiNavigationBar.GetComponent<Animator>();
     }
 
     public void OpenCustomization()
@@ -31,7 +37,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         uiWindow.SetActive(false);
-        uiWindowAnimator.SetInteger("level", 1);
     }
 
     public void SelectSkinColor()
@@ -40,6 +45,8 @@ public class GameManager : MonoBehaviour
         selectSkinColorButtonText.color = Color.white;
         selectHairstyleButtonText.color = Color.grey;
         uiWindowAnimator.SetInteger("level", 1);
+        cameraAnimator.SetInteger("zoom", 1);
+        uiNavigationBarAnimator.SetBool("goRight", false);
 
         selectSkinColorWindow.SetActive(true);
         selectHairstyleWindow.SetActive(false);
@@ -51,6 +58,8 @@ public class GameManager : MonoBehaviour
         selectSkinColorButtonText.color = Color.grey;
         selectHairstyleButtonText.color = Color.white;
         uiWindowAnimator.SetInteger("level", 2);
+        cameraAnimator.SetInteger("zoom", 2);
+        uiNavigationBarAnimator.SetBool("goRight", true);
 
         selectSkinColorWindow.SetActive(false);
         selectHairstyleWindow.SetActive(true);
@@ -58,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void DoneButton()
     {
         uiWindowAnimator.SetInteger("level", 0);
+        cameraAnimator.SetInteger("zoom", 0);
         doneButton.SetActive(false);
         StartCoroutine(CloseCustomization());
     }
