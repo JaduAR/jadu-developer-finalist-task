@@ -47,11 +47,8 @@ public class CameraShots : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.transform.tag);
-
                 if (hit.transform.tag == "avatar")
                 {
-                    // CloseUpCam();
                     SetScreen(CharacterScreen.skin);
                     tabGroup.GetComponent<TabGroup>().Reset();
                 }
