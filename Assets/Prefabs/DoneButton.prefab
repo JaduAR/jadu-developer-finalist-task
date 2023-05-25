@@ -12,13 +12,15 @@ GameObject:
   - component: {fileID: 4701125538264346972}
   - component: {fileID: 2194154335142984058}
   - component: {fileID: 1117005188153655153}
+  - component: {fileID: 8596202479981875827}
+  - component: {fileID: 8596202479981875828}
   m_Layer: 5
   m_Name: DoneButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3047111697809244250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -121,7 +123,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2194154335142984058}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8596202479981875828}
+        m_TargetAssemblyTypeName: ScreenTwoView, Assembly-CSharp
+        m_MethodName: DoneButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8596202479981875827}
+        m_TargetAssemblyTypeName: ScreenThreeView, Assembly-CSharp
+        m_MethodName: DoneButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8596202479981875827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345423839101576913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37cafdde15538a4992fb32af8c5d44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8596202479981875828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345423839101576913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99ac789690f6a446a8de29189c7c99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7729179208074245362
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +240,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: DONE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5146af7e2b0b71948b30d71349e3945b, type: 2}
-  m_sharedMaterial: {fileID: 2727520444089074357, guid: 5146af7e2b0b71948b30d71349e3945b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 521073e4aa845b6488586caf9f568205, type: 2}
+  m_sharedMaterial: {fileID: -7889400930983534493, guid: 521073e4aa845b6488586caf9f568205, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -215,8 +265,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
