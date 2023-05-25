@@ -351,7 +351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6693957437049894315, guid: da61115f400c946448b75aabcf4e6c50, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6693957437049894315, guid: da61115f400c946448b75aabcf4e6c50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -992,15 +992,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677283072}
-  m_LocalRotation: {x: 0.049724933, y: 0.10760524, z: -0.016179185, w: 0.99281764}
-  m_LocalPosition: {x: -0.337, y: 0.623, z: -1.52}
+  m_LocalRotation: {x: 0.090738475, y: 0.10506469, z: -0.020318564, w: 0.99010867}
+  m_LocalPosition: {x: -0.31, y: 0.73, z: -1.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1963850818}
   m_Father: {fileID: 702276524}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 365.867, y: 372.308, z: -1.234}
+  m_LocalEulerAnglesHint: {x: 370.6, y: 372, z: -1.234}
 --- !u!114 &677283074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 54.4
+    FieldOfView: 61
     OrthographicSize: 5
     NearClipPlane: 0.1
     FarClipPlane: 100
@@ -1101,12 +1101,12 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
-  m_CookieSize: 10
+  m_CookieSize: 1
   m_Shadows:
     m_Type: 1
     m_Resolution: -1
@@ -1141,7 +1141,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1160,7 +1160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: -0.027921861, y: 0, z: 0, w: -0.9996101}
-  m_LocalPosition: {x: 0.5833848, y: 2.6766946, z: -4.41}
+  m_LocalPosition: {x: 0.5833848, y: 2.6766946, z: -19.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1846,7 +1846,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 100
-  field of view: 54.4
+  field of view: 61
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1871,8 +1871,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.049724933, y: 0.10760524, z: -0.016179185, w: 0.99281764}
-  m_LocalPosition: {x: 0.24638367, y: 0.29969457, z: -1.4998146}
+  m_LocalRotation: {x: 0.090738475, y: 0.10506469, z: -0.020318564, w: 0.99010867}
+  m_LocalPosition: {x: 0.2733841, y: 0.40669456, z: -1.4998146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1947,7 +1947,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: aa33df74d8eae4a328440a40001ef159, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1978,15 +1978,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998005404}
-  m_LocalRotation: {x: 0.045812167, y: -0.16906309, z: 0.007866955, w: 0.9845086}
-  m_LocalPosition: {x: 0.178, y: 0.99, z: -0.512}
+  m_LocalRotation: {x: 0.0462033, y: -0.10857607, z: 0.005051931, w: 0.993001}
+  m_LocalPosition: {x: 0.11, y: 0.96, z: -0.512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 290399612}
   m_Father: {fileID: 702276524}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 365.328, y: 340.512, z: 0}
+  m_LocalEulerAnglesHint: {x: 365.328, y: 347.52, z: 0}
 --- !u!114 &998005406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 61.48
+    FieldOfView: 62.2
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 100
@@ -2767,9 +2767,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1283948410}
   - {fileID: 1685289278}
   - {fileID: 1343209307}
+  - {fileID: 1283948410}
   m_Father: {fileID: 377245157}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2836,7 +2836,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1236008839}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2910,19 +2910,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dadac8994f494148a7731cdb2292041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullFigureCam: {fileID: 0}
-  closeUpCam: {fileID: 0}
-  bustCam: {fileID: 0}
-  screenCameras:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   virtualCameras:
   - {fileID: 677283074}
   - {fileID: 1060406689}
   - {fileID: 998005406}
   currentScreen: 0
-  currentCamera: {fileID: 0}
   tabGroup: {fileID: 1236008838}
   tabGroupYPositions: 7cfcffff9cfeffff00000000
   topGroup: {fileID: 1351591909}
@@ -3154,7 +3146,7 @@ RectTransform:
   - {fileID: 1614106555}
   - {fileID: 439794170}
   m_Father: {fileID: 1236008839}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3432,7 +3424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6693957437049894315, guid: cc53779bea66b4e44a1e30cd8ba154f4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6693957437049894315, guid: cc53779bea66b4e44a1e30cd8ba154f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4150,7 +4142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4225,12 +4217,12 @@ RectTransform:
   - {fileID: 1380884612}
   - {fileID: 150299411}
   m_Father: {fileID: 1236008839}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 80}
+  m_SizeDelta: {x: 0, y: 160}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1685289280
 CanvasRenderer:
@@ -4253,15 +4245,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 751ca978e4b224a9fafc1a3ad9144c11, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4269,7 +4261,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.6
 --- !u!114 &1685289282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4287,7 +4279,7 @@ MonoBehaviour:
     m_Right: 20
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 6
   m_Spacing: 20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
@@ -4745,7 +4737,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -5341,7 +5333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132343980}
   m_LocalRotation: {x: -0, y: 0.008726558, z: -0, w: 0.999962}
-  m_LocalPosition: {x: 1.131, y: 3.043, z: -1.556}
+  m_LocalPosition: {x: 0.927, y: 0.374, z: -0.442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5360,8 +5352,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.32
-  m_Range: 3.02
+  m_Intensity: 2.27
+  m_Range: 1.75
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
