@@ -12,15 +12,19 @@ public class CameraController : MonoBehaviour
     [Header("Properties")]
     [SerializeField] private AnimationCurve _transitionCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     [SerializeField] private float _transitionDuration = 1f;
+    
+    private Coroutine _transitionCoroutine;
 
     public void ZoomIn()
     {
+        if(_transitionCoroutine != null) StopCoroutine(_transitionCoroutine);
         StartCoroutine(Transition(ZoomedInPosition.position, ZoomedInPosition.rotation));
     }
     
     public void ZoomOut()
     {
-        StartCoroutine(Transition(ZoomedOutPosition.position, ZoomedOutPosition.rotation));
+        if(_transitionCoroutine != null) StopCoroutine(_transitionCoroutine);
+        _transitionCoroutine = StartCoroutine(Transition(ZoomedOutPosition.position, ZoomedOutPosition.rotation));
     }
 
     private IEnumerator Transition(Vector3 newPosition, Quaternion newRotation)

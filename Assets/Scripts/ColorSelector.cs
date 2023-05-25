@@ -11,6 +11,8 @@ public class ColorSelector : Selector
    [SerializeField] private float _shrinkSize = 0.25f;
    [SerializeField] private float _tweenDuration = 0.1f;
    [SerializeField] private AnimationCurve _TweenCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+   
+   private Coroutine _scaleTweenCoroutine;
 
    public void SetColor(Color skinColor)
    {
@@ -20,12 +22,14 @@ public class ColorSelector : Selector
    //This is called when the button is clicked. Hooked in by Unity Event.
    public override void Select()
    {
+      if(_scaleTweenCoroutine != null) StopCoroutine(_scaleTweenCoroutine);
       StartCoroutine(ScaleTween(Vector3.one * _shrinkSize, _tweenDuration));
       owner.SetActiveItem(this);
    }
 
    public override void Deselect()
    {
+      if(_scaleTweenCoroutine != null) StopCoroutine(_scaleTweenCoroutine);
       StartCoroutine(ScaleTween(Vector3.one, _tweenDuration));
    }
    

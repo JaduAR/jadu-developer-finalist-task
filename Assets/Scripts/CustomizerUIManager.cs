@@ -21,6 +21,8 @@ public class CustomizerUIManager : MonoBehaviour
     private bool _isActive = false;
     private RectTransform _rectTransform;
     
+    private Coroutine _transitionCoroutine;
+    
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -59,9 +61,7 @@ public class CustomizerUIManager : MonoBehaviour
             return;
         }
         //Sets the first tab in the list to be selected as default.
-        _activeTab = _tabs[0];
-        _activeTab.Select();
-        UpdateUIPosition(_activeTab.TabPosition);
+        SetActiveTab(0);
         _isActive = true;
         OnUIOpened?.Invoke();
     }
@@ -77,7 +77,9 @@ public class CustomizerUIManager : MonoBehaviour
 
     private void UpdateUIPosition(Vector2 position)
     { 
-        StartCoroutine(Transition(position));
+        if(_transitionCoroutine != null)
+            StopCoroutine(_transitionCoroutine);
+        _transitionCoroutine = StartCoroutine(Transition(position));
     }
 
     //Interpolates the UI position based on anchored position.
