@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,10 @@ public class CustomizerManager : MonoBehaviour
 
     [SerializeField]
     RectTransform uiPanel;
+    float panelHeight;  //cached value for different screen sizes
+    //normalized values (how much to slide up for each screen?)
+    float Screen2PanelPos = 0.6f;
+    float Screen3PanelPos = 1f;     //Assume hair panel is always higher than the skin scroller
 
     public List<Color> SkinColors;
     public Transform ColorGroup;
@@ -32,10 +37,22 @@ public class CustomizerManager : MonoBehaviour
     public float KnobSelectedSizeFector = 0.35f;
     private List<GameObject> CurrentColorKnobs;
 
-    
+    public float UiSlidingInterval = 0.5f;
+
+    [Header("UI Text Color")]
+    public Color TagActive;
+    public Color TagInactive;
+    public Button SkinButton;
+    public Button HairButton;
+
+    public Transform HairGroup;
+
+    float PanelStepAmount { get { return panelHeight * (Time.deltaTime / UiSlidingInterval);  } }
+
     private void Start()
     {
-        CreateSkinColorKnobs();    
+        panelHeight = uiPanel.sizeDelta.y;
+        CreateSkinColorKnobs();
     }
 
     private void Update()
@@ -67,21 +84,87 @@ public class CustomizerManager : MonoBehaviour
 
     IEnumerator Screen1To2()
     {
+        SkinButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagActive;
+        HairButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagInactive;
+        ColorGroup.gameObject.SetActive(true);
+        HairGroup.gameObject.SetActive(false);
+
         StartCoroutine(camTrans.CamTransition(Campos2));
-        while(!camTrans.TransitionDone)
+        //slide in the panel
+        while (uiPanel.anchoredPosition.y < Screen2PanelPos * panelHeight)
+        {
+            uiPanel.anchoredPosition += Vector2.up * Screen2PanelPos * PanelStepAmount;
+            yield return null;
+        }
+        while (!camTrans.TransitionDone)
         {
             yield return null;
         }
 
-        //slide in the panel
-        while(uiPanel.anchoredPosition.y < uiPanel.sizeDelta.y)
+
+        State = CustomizerState.Screen2;
+    }
+
+    IEnumerator Screen2To3()
+    {
+        SkinButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagInactive;
+        HairButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagActive;
+        ColorGroup.gameObject.SetActive(false);
+        HairGroup.gameObject.SetActive(true);
+        
+        StartCoroutine(camTrans.CamTransition(Campos3));
+        while (uiPanel.anchoredPosition.y < Screen3PanelPos * panelHeight)
         {
-            uiPanel.anchoredPosition += Vector2.up * uiPanel.sizeDelta.y * Time.deltaTime * 2f;
+            uiPanel.anchoredPosition += Vector2.up * Screen3PanelPos * PanelStepAmount;
+            yield return null;
+        }
+        while (!camTrans.TransitionDone)
+        {
+            yield return null;
+        }
+
+
+        State = CustomizerState.Screen3;
+    }
+
+    IEnumerator Screen3To2()
+    {
+        SkinButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagActive;
+        HairButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagInactive;
+        ColorGroup.gameObject.SetActive(true);
+        HairGroup.gameObject.SetActive(false);
+
+        StartCoroutine(camTrans.CamTransition(Campos2));
+        while (uiPanel.anchoredPosition.y > Screen2PanelPos * panelHeight)
+        {
+            uiPanel.anchoredPosition -= Vector2.up * Screen2PanelPos * PanelStepAmount;
+            yield return null;
+        }
+        while (!camTrans.TransitionDone)
+        {
             yield return null;
         }
 
         State = CustomizerState.Screen2;
     }
+
+    IEnumerator ScreenToMain()
+    {
+        StartCoroutine(camTrans.CamTransition(CamposMain));
+        float panelPos = uiPanel.anchoredPosition.y / uiPanel.sizeDelta.y;
+        while (uiPanel.anchoredPosition.y > 0f)
+        {
+            uiPanel.anchoredPosition -= Vector2.up * Screen2PanelPos * PanelStepAmount;
+            yield return null;
+        }
+        while (!camTrans.TransitionDone)
+        {
+            yield return null;
+        }
+
+        State = CustomizerState.Screen1;
+    }
+
 
     private void CreateSkinColorKnobs()
     {
@@ -139,6 +222,28 @@ public class CustomizerManager : MonoBehaviour
     //UI Functions
     public void HairButtonClicked()
     {
-        print("HAIR");
+        if(State == CustomizerState.Screen2)
+        {
+            State = CustomizerState.InTransition;
+            StartCoroutine(Screen2To3());
+        }
+    }
+
+    public void SkinButtonClicked()
+    {
+        if (State == CustomizerState.Screen3)
+        {
+            State = CustomizerState.InTransition;
+            StartCoroutine(Screen3To2());
+        }
+    }
+
+    public void DoneButtonClicked()
+    {
+        if (State == CustomizerState.Screen3 || State == CustomizerState.Screen2)
+        {
+            State = CustomizerState.InTransition;
+            StartCoroutine(ScreenToMain());
+        }
     }
 }
