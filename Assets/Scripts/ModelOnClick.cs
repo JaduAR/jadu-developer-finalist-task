@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ModelOnClick : MonoBehaviour
 {
-    public ScreenOneView screenOneView;
-    public bool allowed;
+    private ScreenOneView screenOneView;
+    private bool allowed;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        screenOneView = gameObject.GetComponent<ScreenOneView>();
     }
 
     private void OnEnable()
