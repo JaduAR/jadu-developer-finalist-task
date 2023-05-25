@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject uiWindow;
     private Animator uiWindowAnimator;
     public ColorSelection[] colorSelection;
+    public HairstyleSelection[] hairstylesSelection;
     public TextMeshProUGUI selectSkinColorButtonText;
     public GameObject selectSkinColorWindow;
     public TextMeshProUGUI selectHairstyleButtonText;
