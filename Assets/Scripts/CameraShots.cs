@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cinemachine;
+
+
+
 
 public class CameraShots : MonoBehaviour
 {
@@ -10,9 +14,10 @@ public class CameraShots : MonoBehaviour
     public Camera bustCam;
 
 
-    public enum CharacterScreen { preview = 0, skin, hair };
+    public enum CharacterScreen { preview = 0, skin, hair, na };
     public Camera[] screenCameras;
-    [SerializeField] private CharacterScreen currentScreen = CharacterScreen.preview;
+    public CinemachineVirtualCamera[] virtualCameras;
+    [SerializeField] private CharacterScreen currentScreen = CharacterScreen.na;
     // [SerializeField] private Camera lastCamera = null;
     [SerializeField] private Camera currentCamera = null;
     
@@ -36,6 +41,7 @@ public class CameraShots : MonoBehaviour
         // if(characterMenu != null)
         //     characterMenu.SetActive(false);
         ResetCam();
+        
 
         // currentCamera = fullFigureCam;
         // FullFigureCam();
@@ -76,6 +82,8 @@ public class CameraShots : MonoBehaviour
                     // CloseUpCam();
                     SetScreen(CharacterScreen.skin);
                     tabGroup.GetComponent<TabGroup>().Reset();
+
+
                 }
             }
 
@@ -84,17 +92,92 @@ public class CameraShots : MonoBehaviour
 
     public void ResetCam()
     {
-        fullFigureCam.enabled = false;
-        closeUpCam.enabled = false;
-        bustCam.enabled = false;
+        // fullFigureCam.enabled = false;
+        // closeUpCam.enabled = false;
+        // bustCam.enabled = false;
 
-        fullFigureCam.gameObject.tag = "Untagged";
-        closeUpCam.gameObject.tag = "Untagged";
-        bustCam.gameObject.tag = "Untagged";
+        // fullFigureCam.gameObject.tag = "Untagged";
+        // closeUpCam.gameObject.tag = "Untagged";
+        // bustCam.gameObject.tag = "Untagged";
 
-        currentCamera = null;
-        currentScreen = CharacterScreen.preview;
+        // currentCamera = null;
+
+
+        // currentScreen = CharacterScreen.preview;
+        currentScreen = CharacterScreen.na;
+        
+        SetScreen(CharacterScreen.preview);
+
     }
+
+    public void SetScreen(CharacterScreen characterScreen)
+    {
+        Debug.LogWarning("default: " + characterScreen);
+        if(currentScreen == characterScreen) return;
+
+        currentScreen = characterScreen;
+Debug.LogWarning("default: " + characterScreen);
+        switch(characterScreen)
+        {
+            case CharacterScreen.skin:
+                virtualCameras[(int)CharacterScreen.skin].enabled = true;
+                virtualCameras[(int)CharacterScreen.preview].enabled = false;
+                break;
+            case CharacterScreen.hair:
+                virtualCameras[(int)CharacterScreen.hair].enabled = true;
+                virtualCameras[(int)CharacterScreen.skin].enabled = false;
+                break;
+            case CharacterScreen.preview:
+                virtualCameras[(int)CharacterScreen.preview].enabled = true;
+                break;
+        }
+
+        tabGroup.GetComponent<RectTransform>().DOAnchorPosY(tabGroupYPositions[(int)characterScreen], appearingDuration).SetEase(Ease.OutExpo).SetUpdate(true);
+        topGroup.GetComponent<RectTransform>().DOAnchorPosY(topGroupYPositions[(int)characterScreen], appearingDuration).SetEase(Ease.OutExpo).SetUpdate(true);
+
+    }
+
+
+    // public void SetScreen(CharacterScreen characterScreen)
+    // {
+    //     Debug.Log($"SetScreen({(int)characterScreen})");
+
+    //     Camera newCamera = screenCameras[(int)characterScreen];
+    //     if(newCamera == currentCamera && currentCamera != null)
+    //         return;
+        
+    //     Debug.Log($"ㄴ#1");
+        
+    //     if(currentCamera != null)
+    //     {
+    //         // Transform backupTransform = newCamera.transform;
+
+    //         // newCamera.transform.position = currentCamera.transform.position;
+    //         // newCamera.transform.rotation = currentCamera.transform.rotation;
+    //         // newCamera.transform.localScale = currentCamera.transform.localScale;
+
+
+    //         currentCamera.enabled = false;
+    //         currentCamera.gameObject.tag = "Untagged";
+    //         Debug.Log($"ㄴ#2");
+    //         // currentCamera.transform.DOMove(newCamera.transform.position, cameraDuration);
+
+
+
+    //         // newCamera.transform.DOMove(backupTransform.transform.position, cameraDuration);
+    //         // newCamera.transform.DORotateQuaternion(backupTransform.transform.rotation, cameraDuration);
+    //     }
+
+    //     currentCamera = newCamera;
+    //     currentCamera.enabled = true;
+    //     currentCamera.gameObject.tag = "MainCamera";
+        
+        
+    //     currentScreen = characterScreen;
+
+    //     tabGroup.GetComponent<RectTransform>().DOAnchorPosY(tabGroupYPositions[(int)characterScreen], appearingDuration).SetEase(Ease.OutExpo).SetUpdate(true);
+    //     topGroup.GetComponent<RectTransform>().DOAnchorPosY(topGroupYPositions[(int)characterScreen], appearingDuration).SetEase(Ease.OutExpo).SetUpdate(true);
+    // }
 
     // public void CloseUpCam()
     // {
@@ -112,46 +195,6 @@ public class CameraShots : MonoBehaviour
     //     topGroup.GetComponent<RectTransform>().DOAnchorPosY(topGroupYPositions[(int)currentScreen], appearingDuration).SetEase(Ease.OutExpo).SetUpdate(true);
     // }
 
-    public void SetScreen(CharacterScreen characterScreen)
-    {
-        Debug.Log($"SetScreen({(int)characterScreen})");
-
-        Camera newCamera = screenCameras[(int)characterScreen];
-        if(newCamera == currentCamera && currentCamera != null)
-            return;
-        
-        Debug.Log($"ㄴ#1");
-        
-        if(currentCamera != null)
-        {
-            // Transform backupTransform = newCamera.transform;
-
-            // newCamera.transform.position = currentCamera.transform.position;
-            // newCamera.transform.rotation = currentCamera.transform.rotation;
-            // newCamera.transform.localScale = currentCamera.transform.localScale;
-
-
-            currentCamera.enabled = false;
-            currentCamera.gameObject.tag = "Untagged";
-            Debug.Log($"ㄴ#2");
-            // currentCamera.transform.DOMove(newCamera.transform.position, cameraDuration);
-
-
-
-            // newCamera.transform.DOMove(backupTransform.transform.position, cameraDuration);
-            // newCamera.transform.DORotateQuaternion(backupTransform.transform.rotation, cameraDuration);
-        }
-
-        currentCamera = newCamera;
-        currentCamera.enabled = true;
-        currentCamera.gameObject.tag = "MainCamera";
-        
-        
-        currentScreen = characterScreen;
-
-        tabGroup.GetComponent<RectTransform>().DOAnchorPosY(tabGroupYPositions[(int)characterScreen], appearingDuration).SetEase(Ease.OutExpo).SetUpdate(true);
-        topGroup.GetComponent<RectTransform>().DOAnchorPosY(topGroupYPositions[(int)characterScreen], appearingDuration).SetEase(Ease.OutExpo).SetUpdate(true);
-    }
 
     // public void FullFigureCam()
     // {

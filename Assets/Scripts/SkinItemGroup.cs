@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SkinItemGroup : MonoBehaviour
 {
     [SerializeField] private SkinItemButton[] itemButtons;
+    [SerializeField] private ScrollRect scrollRect = null;
     SkinItemButton selectedItem = null;
+    int itemCount = 0;
+    int lastSelectedIndex = 0;
 
     void Start()
     {
         ResetItems();
-        if(itemButtons.Length > 0)
+        itemCount = itemButtons.Length;
+        if(itemCount > 0)
+        {
             itemButtons[0].SetActivate(true);
+            lastSelectedIndex = 0;
+            scrollRect.ScrollToCenter((RectTransform)itemButtons[0].gameObject.transform);
+        }
+            
     }
     private void ResetItems()
     {
@@ -27,10 +37,17 @@ public class SkinItemGroup : MonoBehaviour
         GameObject tempBtn = EventSystem.current.currentSelectedGameObject;
         selectedItem = tempBtn.GetComponent<SkinItemButton>();
 
+        lastSelectedIndex = tempBtn.transform.GetSiblingIndex();
+        Debug.Log("selected index = " + lastSelectedIndex);
+
+        // scrollRect.ScrollToCenter(GetChildObjectByIndex(lastPlayedMissionIndex, missionContentObj));
+        scrollRect.ScrollToCenter((RectTransform)tempBtn.transform);
+
+
         ResetItems();
         selectedItem.SetActivate(true);
 
-        Debug.Log(selectedItem);
+        // Debug.Log(selectedItem);
     } 
 
 }
