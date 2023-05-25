@@ -1,0 +1,148 @@
+.skin-color-style {
+    background-image: url('project://database/Assets/Materials/Icon_Circle.png?fileID=2800000&guid=508e219b9f1bb9549a01e5c3b8ce2dbb&type=3#Icon_Circle');
+    margin-left: 16px;
+    width: 32px;
+    height: 32px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.hair-style {
+    width: 108px;
+    height: 108px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-image: url('project://database/Assets/Materials/Shoes_CloudRunner.png?fileID=21300000&guid=22d172d97ed646e40885b0fa9aa64cc3&type=3#Shoes_CloudRunner');
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(255, 255, 255, 0.16);
+    border-right-color: rgba(255, 255, 255, 0.16);
+    border-top-color: rgba(255, 255, 255, 0.16);
+    border-bottom-color: rgba(255, 255, 255, 0.16);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.customization-tray {
+    background-color: rgb(0, 0, 0);
+    width: 375px;
+    height: 152px;
+    top: 660px;
+    position: absolute;
+}
+
+.customization-label-panel {
+    justify-content: flex-end;
+    width: 375px;
+    height: 224px;
+    top: 437px;
+    background-image: url('project://database/Assets/Materials/Safe%20Gradient.png?fileID=2800000&guid=60522e471afbd0346a8a8093969c9042&type=3#Safe Gradient');
+}
+
+.customization-label {
+    align-items: center;
+    flex-direction: row;
+    width: 375px;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    height: 25px;
+    top: auto;
+    position: relative;
+}
+
+.customization-label-text {
+    width: 33px;
+    height: 16px;
+    -unity-font: url('project://database/Assets/Materials/FavoritMono-Regular.otf?fileID=12800000&guid=3e4e8e246db84462eaa712b18b8bb0a9&type=3#FavoritMono-Regular');
+    -unity-font-definition: url('project://database/Assets/Materials/FavoritMono-Regular%20SDF.asset?fileID=11400000&guid=f32388b424170304a85d8c5ef6859a1f&type=2#FavoritMono-Regular SDF');
+    font-size: 12px;
+    -unity-font-style: normal;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    left: 16px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: rgb(219, 219, 219);
+    margin-right: 32px;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content: flex-start;
+    align-items: stretch;
+    -unity-text-align: middle-center;
+}
+
+.customization-done-button {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 43px;
+    height: 24px;
+    left: 316px;
+    top: 32px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0);
+    -unity-font-definition: url('project://database/Assets/Materials/FavoritMono-Regular%20SDF.asset?fileID=11400000&guid=f32388b424170304a85d8c5ef6859a1f&type=2#FavoritMono-Regular SDF');
+    -unity-font: url('project://database/Assets/Materials/FavoritMono-Regular.otf?fileID=12800000&guid=3e4e8e246db84462eaa712b18b8bb0a9&type=3#FavoritMono-Regular');
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    background-image: url('project://database/Assets/Materials/UI%20Icons/Accessory%201.png?fileID=2800000&guid=a6dfc2260fd1b844985b0341855e7183&type=3#Accessory 1');
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.hair-style {
+}
+
+.hair-style {
+    width: 108px;
+    height: 108px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-image: url('project://database/Assets/Materials/Shoes_CloudRunner.png?fileID=21300000&guid=22d172d97ed646e40885b0fa9aa64cc3&type=3#Shoes_CloudRunner');
+    background-color: rgb(29, 30, 33);
+    border-left-color: rgba(255, 255, 255, 0.16);
+    border-right-color: rgba(255, 255, 255, 0.16);
+    border-top-color: rgba(255, 255, 255, 0.16);
+    border-bottom-color: rgba(255, 255, 255, 0.16);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
