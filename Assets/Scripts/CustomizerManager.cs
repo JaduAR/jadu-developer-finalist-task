@@ -44,15 +44,28 @@ public class CustomizerManager : MonoBehaviour
     public Color TagInactive;
     public Button SkinButton;
     public Button HairButton;
+    public Button DoneButton;
 
     public Transform HairGroup;
+    public GameObject HairGridPrefab;
+    public float HairDistanceFactor = 0.5f;
 
-    float PanelStepAmount { get { return panelHeight * (Time.deltaTime / UiSlidingInterval);  } }
+    [Serializable]
+    public struct HairData
+    {
+        public string Name;
+        public Sprite Tex;
+    }
+    public List<HairData> HairGridData;
+    private List<GameObject> CurrentHairGrids;
+
+    float PanelStepAmount { get { return panelHeight * (Time.deltaTime / UiSlidingInterval); } }
 
     private void Start()
     {
         panelHeight = uiPanel.sizeDelta.y;
         CreateSkinColorKnobs();
+        CreateHairGrids();
     }
 
     private void Update()
@@ -77,7 +90,16 @@ public class CustomizerManager : MonoBehaviour
                     StartCoroutine(Screen1To2());
                 }
             }
-
+        }
+        else if (Input.GetMouseButtonDown(0) && State == CustomizerState.Screen1)   //Q:need to handle mouse click as well?
+        {
+            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(r, out hit) && hit.collider.tag == "Player")
+            {
+                State = CustomizerState.InTransition;
+                StartCoroutine(Screen1To2());
+            }
         }
 
     }
@@ -86,8 +108,8 @@ public class CustomizerManager : MonoBehaviour
     {
         SkinButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagActive;
         HairButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagInactive;
-        ColorGroup.gameObject.SetActive(true);
-        HairGroup.gameObject.SetActive(false);
+        ColorGroup.parent.parent.gameObject.SetActive(true);
+        HairGroup.parent.parent.gameObject.SetActive(false);
 
         StartCoroutine(camTrans.CamTransition(Campos2));
         //slide in the panel
@@ -101,7 +123,7 @@ public class CustomizerManager : MonoBehaviour
             yield return null;
         }
 
-
+        DoneButton.gameObject.SetActive(true);
         State = CustomizerState.Screen2;
     }
 
@@ -109,8 +131,8 @@ public class CustomizerManager : MonoBehaviour
     {
         SkinButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagInactive;
         HairButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagActive;
-        ColorGroup.gameObject.SetActive(false);
-        HairGroup.gameObject.SetActive(true);
+        ColorGroup.parent.parent.gameObject.SetActive(false);
+        HairGroup.parent.parent.gameObject.SetActive(true);
         
         StartCoroutine(camTrans.CamTransition(Campos3));
         while (uiPanel.anchoredPosition.y < Screen3PanelPos * panelHeight)
@@ -131,8 +153,8 @@ public class CustomizerManager : MonoBehaviour
     {
         SkinButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagActive;
         HairButton.transform.GetChild(0).GetComponent<TMP_Text>().color = TagInactive;
-        ColorGroup.gameObject.SetActive(true);
-        HairGroup.gameObject.SetActive(false);
+        ColorGroup.parent.parent.gameObject.SetActive(true);
+        HairGroup.parent.parent.gameObject.SetActive(false);
 
         StartCoroutine(camTrans.CamTransition(Campos2));
         while (uiPanel.anchoredPosition.y > Screen2PanelPos * panelHeight)
@@ -150,6 +172,7 @@ public class CustomizerManager : MonoBehaviour
 
     IEnumerator ScreenToMain()
     {
+        DoneButton.gameObject.SetActive(false);
         StartCoroutine(camTrans.CamTransition(CamposMain));
         float panelPos = uiPanel.anchoredPosition.y / uiPanel.sizeDelta.y;
         while (uiPanel.anchoredPosition.y > 0f)
@@ -165,17 +188,16 @@ public class CustomizerManager : MonoBehaviour
         State = CustomizerState.Screen1;
     }
 
-
     private void CreateSkinColorKnobs()
     {
         CurrentColorKnobs = new List<GameObject>();
         float totalWidth = 0f;
-        for(int i = 0; i < SkinColors.Count; i++)
+        for (int i = 0; i < SkinColors.Count; i++)
         {
             GameObject knob = Instantiate(ColorKnobPrefab, ColorGroup);
             RectTransform knobRT = knob.GetComponent<RectTransform>();
 
-            if(i == 0)
+            if (i == 0)
             {
                 totalWidth = knobRT.sizeDelta.x * knobRT.localScale.x * (0.5f + KnobDistanceFactor);
             }
@@ -193,6 +215,7 @@ public class CustomizerManager : MonoBehaviour
         }
         ColorGroup.GetComponent<RectTransform>().sizeDelta *= Vector2.up;       //zero out the width
         ColorGroup.GetComponent<RectTransform>().sizeDelta += Vector2.right * totalWidth;    //calculate the actual width
+
     }
 
     void SelectColorKnob(ColorKnob knob)
@@ -218,6 +241,66 @@ public class CustomizerManager : MonoBehaviour
         }
     }
 
+    private void CreateHairGrids()
+    {
+
+        CurrentHairGrids = new List<GameObject>();
+        float totalWidth = 0f;
+        for (int i = 0; i < HairGridData.Count; i++)
+        {
+            GameObject grid = Instantiate(HairGridPrefab, HairGroup);
+            RectTransform gridRT = grid.GetComponent<RectTransform>();
+
+            if (i == 0)
+            {
+                totalWidth = gridRT.sizeDelta.x * gridRT.localScale.x * (0.5f + HairDistanceFactor);
+            }
+
+            grid.GetComponent<HairGrid>().Init(HairGridData[i].Name, HairGridData[i].Tex);
+
+            var gridComp = grid.GetComponent<HairGrid>();
+            gridComp.OnGridClicked += SelectHairGrid;
+            gridComp.IsSelected = false;
+            gridComp.Index = i;
+
+            //2 rows
+            if (i % 2 == 0)
+            {
+                gridRT.anchoredPosition = Vector2.right * totalWidth - Vector2.up * gridRT.sizeDelta.y * (0.5f + HairDistanceFactor);
+                totalWidth += gridRT.sizeDelta.x * gridRT.localScale.x * (1 + HairDistanceFactor);
+            }
+            else
+            {
+                gridRT.anchoredPosition = CurrentHairGrids[i - 1].GetComponent<RectTransform>().anchoredPosition - Vector2.up * gridRT.sizeDelta.y * (1 + HairDistanceFactor);
+            }
+
+
+            CurrentHairGrids.Add(grid);
+        }
+        HairGroup.GetComponent<RectTransform>().sizeDelta *= Vector2.up;       //zero out the width
+        HairGroup.GetComponent<RectTransform>().sizeDelta += Vector2.right * totalWidth;    //calculate the actual width
+    }
+
+    void SelectHairGrid(HairGrid grid)
+    {
+        if (grid.IsSelected)
+        {
+            return;
+        }
+
+        foreach (var knobObj in CurrentHairGrids)
+        {
+            var refGrid = knobObj.GetComponent<HairGrid>();
+            if (refGrid.Index == grid.Index)
+            {
+                refGrid.SetSelected(true);
+            }
+            else
+            {
+                refGrid.SetSelected(false);
+            }
+        }
+    }
 
     //UI Functions
     public void HairButtonClicked()
