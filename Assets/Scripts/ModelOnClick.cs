@@ -5,7 +5,7 @@ using UnityEngine;
 public class ModelOnClick : MonoBehaviour
 {
     private ScreenOneView screenOneView;
-    private bool allowed;
+    private bool allowed = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,6 +21,7 @@ public class ModelOnClick : MonoBehaviour
     private void OnDisable()
     {
         screenOneView.OnModelClicked -= ToggleBool;
+        screenOneView.OnReturn -= ToggleBool;
     }
 
 

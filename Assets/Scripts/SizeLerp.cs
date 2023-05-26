@@ -36,26 +36,26 @@ public class SizeLerp : MonoBehaviour, IDeselectHandler
     {
         if(!selected)
         {
-            StartCoroutine(LerpSize(0.25f, timeToLerp));
+            StartCoroutine(LerpShrink());
             selected = true;
         }
 
     }
 
-    IEnumerator LerpSize(float endValue, float duration)
+    IEnumerator LerpShrink()
     {
         float time = 0;
         float startValue = scaleModifier;
         Vector3 startScale = transform.localScale;
-        while (time < duration)
+        while (time < timeToLerp)
         {
-            scaleModifier = Mathf.Lerp(startValue, endValue, time / duration);
+            scaleModifier = Mathf.Lerp(1f, 0.25f, time / timeToLerp);
             transform.localScale = startScale * scaleModifier;
             time += Time.deltaTime;
             yield return null;
         }
 
-        transform.localScale = startScale * endValue;
+        transform.localScale = startScale * 0.25f;
     }
 
     IEnumerator LerpGrow()

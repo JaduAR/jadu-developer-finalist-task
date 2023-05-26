@@ -7,34 +7,30 @@ public class PanelLerp : MonoBehaviour
     public ScreenOneView screenOneView;
     public GameObject ScreenTwo;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     private void OnEnable()
     {
-        screenOneView.OnModelClicked += PanelScreenOneToTwo;
-        screenOneView.OnReturn += PanelScreenTwoToOne;
+        screenOneView.OnModelClicked += PanelRise;
+        screenOneView.OnReturn += PanelShrink;
     }
 
     private void OnDisable()
     {
-        screenOneView.OnModelClicked -= PanelScreenOneToTwo;
-        screenOneView.OnReturn -= PanelScreenTwoToOne;
+        screenOneView.OnModelClicked -= PanelRise;
+        screenOneView.OnReturn -= PanelShrink;
 
     }
 
-    public void PanelScreenOneToTwo()
+    public void PanelRise()
     {
-        StartCoroutine(PanelLerpRoutine(ScreenTwo, 0f, 200f, 0.3f));
+        StartCoroutine(PanelLerpRoutine(ScreenTwo, -232f, 0f, 0.3f));
 
     }
 
-    public void PanelScreenTwoToOne()
+    public void PanelShrink()
     {
 
-        StartCoroutine(PanelLerpRoutine(ScreenTwo, 200f, 0f, 0.3f));
+        StartCoroutine(PanelLerpRoutine(ScreenTwo, 0f, -232f, 0.3f));
 
     }
 
@@ -44,12 +40,13 @@ public class PanelLerp : MonoBehaviour
 
         while (time < duration)
         {
-            float scaleModifier = Mathf.Lerp(startValue, endValue, time / duration);
-            rect.GetComponent<RectTransform>().sizeDelta = new Vector2(0, scaleModifier);
+            rect.GetComponent<RectTransform>().position = new Vector3(rect.GetComponent<RectTransform>().position.x, Mathf.Lerp(startValue, endValue, time / duration), rect.GetComponent<RectTransform>().position.z);
+
             time += Time.deltaTime;
             yield return null;
         }
-        rect.GetComponent<RectTransform>().sizeDelta = new Vector2(0, endValue);
+        rect.GetComponent<RectTransform>().position = new Vector3(rect.GetComponent<RectTransform>().position.x, endValue, rect.GetComponent<RectTransform>().position.z);
+
     }
 
 

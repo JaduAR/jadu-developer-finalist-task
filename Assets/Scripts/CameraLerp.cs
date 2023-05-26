@@ -22,6 +22,7 @@ public class CameraLerp : MonoBehaviour
     private void OnDisable()
     {
         screenOneView.OnModelClicked -= ZoomIn;
+        screenOneView.OnReturn -= ResetCam;
     }
 
     public void ResetCam()

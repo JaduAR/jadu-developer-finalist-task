@@ -5,13 +5,9 @@ using UnityEngine.Events;
 
 public class ScreenOneView : BaseView
 {
-    // Events to attach to.
     public UnityAction OnModelClicked;
     public UnityAction OnReturn;
 
-    /// <summary>
-    /// Method called by Start Button.
-    /// </summary>
     public void ModelClick()
     {
         OnModelClicked?.Invoke();

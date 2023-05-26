@@ -16,13 +16,6 @@ public class ScreenThreeState : BaseState
 
             view.ShowView();
         }
-
-        // Attach functions to view events
-/*        owner.UI.ScreenThreeView.OnSkinButtonClicked += SkinButtonClicked;
-        owner.UI.ScreenThreeView.OnDoneButtonClicked += DoneButtonClicked;
-
-        // Show menu view
-        owner.UI.ScreenThreeView.ShowView();*/
     }
 
     public override void DestroyState()
@@ -30,16 +23,10 @@ public class ScreenThreeState : BaseState
 
         foreach (var view in owner.UI.ScreenThreeView)
         {
-            view.HideView();
             view.OnSkinButtonClicked += SkinButtonClicked;
             view.OnDoneButtonClicked += DoneButtonClicked;
+            view.HideView();
         }
-        // Hide menu view
-        /*        owner.UI.ScreenThreeView.HideView();
-
-                // Detach functions from view events
-                owner.UI.ScreenThreeView.OnSkinButtonClicked -= SkinButtonClicked;
-                owner.UI.ScreenThreeView.OnDoneButtonClicked -= DoneButtonClicked;*/
 
         base.DestroyState();
     }

@@ -9,9 +9,6 @@ public class ScreenTwoView : BaseView
     public UnityAction OnHairButtonClicked;
     public UnityAction OnDoneButtonClicked;
 
-    /// <summary>
-    /// Method called by Start Button.
-    /// </summary>
     public void HairButtonClick()
     {
         OnHairButtonClicked?.Invoke();

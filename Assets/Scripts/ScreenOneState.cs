@@ -15,20 +15,10 @@ public class ScreenOneState : BaseState
             view.Return();
 
         }
-
-        //owner.UI.ScreenOneView.OnModelClicked += ModelClicked;
-
-        // Show menu view
-        //owner.UI.ScreenOneView.ShowView();
     }
 
     public override void DestroyState()
     {
-        // Hide menu view
-        //owner.UI.ScreenOneView.HideView();
-
-        // Detach functions from view events
-        //owner.UI.ScreenOneView.OnModelClicked -= ModelClicked;
 
         foreach (var view in owner.UI.ScreenOneView)
         {
@@ -38,11 +28,9 @@ public class ScreenOneState : BaseState
         base.DestroyState();
     }
 
-    /// <summary>
-    /// Function called when Start button is clicked in Menu view.
-    /// </summary>
     private void ModelClicked()
     {
         owner.ChangeState(new ScreenTwoState());
     }
+
 }
