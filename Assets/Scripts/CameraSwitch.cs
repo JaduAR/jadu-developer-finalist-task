@@ -5,45 +5,60 @@ using UnityEngine.UI;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public Camera cam1;
-    public Camera cam2;
-    public Camera cam3;
+    public Transform[] camTransforms;
     public GameObject body;
-    public Button hairButton;
-    public Button skinButton;
-    public Button doneButton;
+    public GameObject canvas;
+    public RectTransform menuRectTransform;
+    Vector3 menuPosition;
 
-    private Camera currCam;
 
-    // Start is called before the first frame update
     void Start()
     {
-        currCam = Camera.main;
+        SetCameraAndCanvas(0);
+        canvas.SetActive(false);
+        menuPosition = new Vector3(0, 0, 0);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = currCam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                if (hit.transform.gameObject.name == "body")
+                if (hit.transform.gameObject.name == "Body")
                 {
-                    ToggleCam(cam2, cam1, cam3);
+                    SetCameraAndCanvas(1);
+                    StartCoroutine(ShowMenu());
                 }
 
             }
         }
     }
 
-    void ToggleCam (Camera activeCam, Camera inactiveCam1, Camera inactiveCam2)
+    IEnumerator ShowMenu()
     {
-        currCam = activeCam;
-        activeCam.enabled = true;
-        inactiveCam1.enabled = false;
-        inactiveCam2.enabled = false;
+        float speed = 2000f;
+        while (menuRectTransform.localPosition.y - menuPosition.y < 0) {
+            menuRectTransform.localPosition += new Vector3(0, speed * Time.deltaTime, 0);
+            yield return null;
+        }
+        
     }
+
+    public void SetCameraAndCanvas(int i)
+    {
+        Camera.main.transform.position = camTransforms[i].position;
+        Camera.main.transform.rotation = camTransforms[i].rotation;
+        if (i == 0)
+        {
+            canvas.SetActive(false);
+        }
+        else
+        {
+            canvas.SetActive(true);
+        }
+    }
+
 }
