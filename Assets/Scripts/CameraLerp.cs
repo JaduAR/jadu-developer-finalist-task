@@ -26,12 +26,12 @@ public class CameraLerp : MonoBehaviour
 
     public void ResetCam()
     {
-        StartCoroutine(LerpPosition(firstPos, 0.25f));
+        StartCoroutine(LerpPosition(firstPos, 0.3f));
     }
 
     public void ZoomIn()
     {
-        StartCoroutine(LerpPosition(lastPos, 0.25f));
+        StartCoroutine(LerpPosition(lastPos, 0.3f));
     }
 
     IEnumerator LerpPosition(GameObject targetPosition, float duration)

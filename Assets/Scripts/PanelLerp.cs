@@ -27,14 +27,14 @@ public class PanelLerp : MonoBehaviour
 
     public void PanelScreenOneToTwo()
     {
-        StartCoroutine(PanelLerpRoutine(ScreenTwo, 0f, 200f, 0.25f));
+        StartCoroutine(PanelLerpRoutine(ScreenTwo, 0f, 200f, 0.3f));
 
     }
 
     public void PanelScreenTwoToOne()
     {
 
-        StartCoroutine(PanelLerpRoutine(ScreenTwo, 200f, 0f, 0.25f));
+        StartCoroutine(PanelLerpRoutine(ScreenTwo, 200f, 0f, 0.3f));
 
     }
 
