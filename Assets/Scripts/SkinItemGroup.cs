@@ -10,6 +10,7 @@ public class SkinItemGroup : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect = null;
     SkinItemButton selectedItem = null;
     int itemCount = 0;
+    int lastItemIndex = 0;
 
     void Start()
     {
@@ -18,8 +19,12 @@ public class SkinItemGroup : MonoBehaviour
         if(itemCount > 0)
         {
             itemButtons[0].SetActivate(true);
-            scrollRect.ScrollToCenter((RectTransform)itemButtons[0].gameObject.transform);
         }
+    }
+
+    void OnEnable()
+    {
+        scrollRect.ScrollToCenter((RectTransform)itemButtons[lastItemIndex].gameObject.transform);
     }
 
     private void ResetItems()
@@ -35,7 +40,7 @@ public class SkinItemGroup : MonoBehaviour
         GameObject tempBtn = EventSystem.current.currentSelectedGameObject;
         selectedItem = tempBtn.GetComponent<SkinItemButton>();
 
-        scrollRect.ScrollToCenter((RectTransform)tempBtn.transform);
+        lastItemIndex = tempBtn.transform.GetSiblingIndex();
 
         ResetItems();
         selectedItem.SetActivate(true);
