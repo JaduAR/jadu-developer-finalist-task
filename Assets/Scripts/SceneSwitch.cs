@@ -10,7 +10,6 @@ public class SceneSwitch : MonoBehaviour
     public GameObject body;
     public GameObject canvas;
     public RectTransform menuRectTransform;
-    Vector3 menuPosition;
     public GameObject menuButtons;
     public TextMeshProUGUI skinButtonText;
     public TextMeshProUGUI hairButtonText;
@@ -19,6 +18,8 @@ public class SceneSwitch : MonoBehaviour
     public GameObject hairBar;
     public GameObject skinBar;
     public GameObject Backgrounds;
+
+    Vector3 menuPosition;
     float ButtonHeight1;
     float ButtonHeight2;
     float BackgroundHeight1;
@@ -107,7 +108,6 @@ public class SceneSwitch : MonoBehaviour
 
     void SetButtonColor(int i)
     {
-        Debug.Log("changecolor");
         Color activateColor = new Color(1, 1, 1, 1);
         Color inactiveColor = new Color(0.6f, 0.63f, 0.67f, 0.8f);
         if (i == 1)
